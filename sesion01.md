@@ -579,7 +579,7 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
     * Se configuran con nuestro servidor DHCP
     * Acceso al exterior y acceso desde el aula
 * Acceso a la web de Proxmox VE de menera interna usando un proxy inverso (https://proxmox.gonzalonazareno.org)
-* El nombre `proxmox.gonzalonazareno.org` apunta a la dirección IP del servidor.
+* El nombre `proxmox.gonzalonazareno.org` apunta a la dirección IP del servidor
 
 ---
 
