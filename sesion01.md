@@ -128,6 +128,21 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 
 </div>
 
+---
+<!-- _paginate: false -->
+<!-- _class: destacado -->
+
+<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:100%; text-align:center;">
+
+<p style="font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--teal-500); margin-bottom:1.5rem;">Pregunta</p>
+
+# ¿Qué sistema de virtualización<br>usas normalmente con los alumnos?
+
+# ¿Has usado alguna vez LXC?  
+
+<p style="font-size:0.85rem; color:var(--slate-400); margin-top:2rem;">💬 Comparte tu experiencia</p>
+
+</div>
 
 ---
 
@@ -414,6 +429,23 @@ OpenStack y Proxmox VE **conviven** en el centro. Cada uno se usa donde aporta m
 </div>
 
 ---
+<!-- _paginate: false -->
+<!-- _class: destacado -->
+
+<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:100%; text-align:center;">
+
+<p style="font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--teal-500); margin-bottom:1.5rem;">Pregunta</p>
+
+# ¿Qué impacto educativo y metodológico esperas con la incorporación de Proxmox VE en tu centro
+
+
+<p style="font-size:0.85rem; color:var(--slate-400); margin-top:2rem;">💬 Comparte tu experiencia</p>
+
+</div>
+
+---
+
+
 
 ## Impacto en las metodologías educativas
 
@@ -660,6 +692,24 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 
 
 ---
+<!-- _paginate: false -->
+<!-- _class: destacado -->
+
+<div style="display:flex; flex-direction:column; justify-content:center; align-items:center; height:100%; text-align:center;">
+
+<p style="font-size:0.9rem; font-weight:700; text-transform:uppercase; letter-spacing:0.15em; color:var(--teal-500); margin-bottom:1.5rem;">Pregunta</p>
+
+# ¿Qué características tiene tu centro? ¿Cuantos ciclos y alumnos van a poder usar Proxmox VE?
+
+# ¿Qué características tiene el acceso a la red de tu centro?
+
+
+<p style="font-size:0.85rem; color:var(--slate-400); margin-top:2rem;">💬 Comparte tu experiencia</p>
+
+</div>
+
+---
+
 
 ## Almacenamiento y redes disponibles en Proxmox VE
 
