@@ -1,0 +1,9 @@
+# Claude Code files
+CLAUDE.md
+.claude/
+.claudeignore
+.claude-workspace
+settings.local.json
+
+# Node modules (if used)
+node_modules/

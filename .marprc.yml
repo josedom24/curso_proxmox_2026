@@ -1,0 +1,5 @@
+html: true
+theme: marp/tema-profesional.css
+size: 16:9
+options:
+  allowLocalFiles: true
