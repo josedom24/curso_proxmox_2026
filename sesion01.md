@@ -728,5 +728,5 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 <div style="margin-top:2rem; display:flex; gap:2rem; justify-content:center; font-size:0.85rem; color:#64748b">
   <span>📧 José Domingo Muñoz</span>
   <span>🏫 IES Gonzalo Nazareno · Dos Hermanas</span>
-  <span>🌐 https://github.com/josedom24/curso_proxmox_2026#</span>
+  <span>🌐 https://github.com/josedom24/curso_proxmox_2026</span>
 </div>
