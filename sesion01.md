@@ -712,7 +712,7 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 
 ## Recursos
 
-* [Cursoo de introducción a Proxmox VE (CEP Casteilleja de la Cuesta)](https://github.com/iesgn/curso_proxmox_cep)
+* [Curso de introducción a Proxmox VE (CEP Casteilleja de la Cuesta)](https://github.com/iesgn/curso_proxmox_cep)
   * Capítulo 1: Introducción a la virtualización con Proxmox VE
   * Capítulo 2: Instalación de Proxmox VE
 * Prácticas con alumnos:
