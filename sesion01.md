@@ -575,7 +575,7 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 * Servidor DHCP en la red
 * Máquina linux hace de router/NAT. Gateway: 172.22.0.1
 * Servidor Proxmox VE, conectado a esta red por un bridge virtual (**vmbr0**)
-* Todas las MV y contenedores conectados al **vmbr0**.
+* Todas las MV y contenedores conectados al **vmbr0**
     * Se configuran con nuestro servidor DHCP
     * Acceso al exterior y acceso desde el aula
 * Acceso a la web de Proxmox VE de menera interna usando un proxy inverso (https://proxmox.gonzalonazareno.org)
