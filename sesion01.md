@@ -2,16 +2,17 @@
 marp: true
 theme: profesional
 paginate: true
-header: 'Proxmox VE · Sesión 1 — Introducción a la virtualización'
-footer: 'José Domingo Muñoz · IES Gonzalo Nazareno · 2026'
+header: 'Proxmox VE · Sesión 1 — Introducción a la virtualización con Proxmox VE'
 ---
 
 <!-- _class: portada -->
 <!-- _paginate: false -->
 
+
+
 # Virtualización con **Proxmox VE**
 
-## Sesión 1 · Introducción a la virtualización
+## Sesión 1 · Introducción a la virtualización con Proxmox VE
 
 <p>José Domingo Muñoz &nbsp;·&nbsp; IES Gonzalo Nazareno &nbsp;·&nbsp; 2026</p>
 
@@ -19,6 +20,7 @@ footer: 'José Domingo Muñoz · IES Gonzalo Nazareno · 2026'
 
 <!-- _class: capitulo -->
 <!-- _paginate: false -->
+
 
 <p class="numero">01</p>
 
@@ -33,9 +35,8 @@ footer: 'José Domingo Muñoz · IES Gonzalo Nazareno · 2026'
 > La virtualización usa software para imitar las características del hardware
 > y crear sistemas informáticos virtuales sobre una misma máquina física.
 
-<div class="cols-2" style="margin-top:1rem">
 
-<div>
+
 
 ### Conceptos clave
 
@@ -43,9 +44,6 @@ footer: 'José Domingo Muñoz · IES Gonzalo Nazareno · 2026'
 - **Sistema anfitrión** (*host*): máquina física que ejecuta el hipervisor
 - **Sistema invitado** (*guest*): sistema operativo que corre dentro del hipervisor
 
-</div>
-
-</div>
 
 ---
 
@@ -60,9 +58,8 @@ El hipervisor emula completamente el hardware físico. Los SO invitados se ejecu
 ### Hipervisor tipo 1 *(bare-metal)*
 
 - Se ejecuta **directamente sobre el hardware físico**, sin SO subyacente
-- La CPU debe contar con extensiones de virtualización
+- Necesarias las extensiones de virtualización en la CPU
 - Rendimiento cercano al de una máquina física real
-- KVM, aunque se ejecuta dentro del kernel Linux, **convierte ese kernel en hipervisor tipo 1**
 
 **Ejemplos:** VMware ESXi, Microsoft Hyper-V, Xen, **KVM**
 
@@ -78,21 +75,15 @@ El hipervisor emula completamente el hardware físico. Los SO invitados se ejecu
 
 **Ejemplos:** VMware Workstation, VirtualBox, Parallels Desktop, VMware Player
 
-<div class="alerta alerta-info" style="margin-top:0.6rem">
-<span>ℹ️</span><div>QEMU puede actuar como tipo 2 por software, o como tipo 1 junto con KVM aprovechando las extensiones del procesador.</div>
 </div>
 
 </div>
 
-</div>
 ---
+
 ## KVM — Kernel-based Virtual Machine
 
 **KVM** es un hipervisor de tipo 1 integrado directamente en el kernel de Linux desde la versión 2.6.20 (2007).
-
-<div class="cols-2" style="margin-top:0.8rem">
-
-<div>
 
 ### Cómo funciona
 
@@ -101,6 +92,7 @@ El hipervisor emula completamente el hardware físico. Los SO invitados se ejecu
 - Cada máquina virtual es un **proceso normal** de Linux con acceso directo al hardware
 - Se apoya en **QEMU** para emular los dispositivos de la VM (disco, red, USB…)
 - Con **dispositivos paravirtualizados** (`virtio`), la VM accede directamente al hardware físico sin pasar por la emulación completa → **mayor rendimiento** (disco, red,...)
+
 ---
 
 ## Tipos de virtualización — Contenedores
@@ -114,9 +106,9 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 ### Contenedores de sistema
 
 - Ejecutan una instancia aislada de un **SO completo**
-- Cada contenedor tiene su propio espacio de usuario, red y almacenamiento
-- Se comportan como una MV ligera, sin duplicar el kernel
-- Arranque en segundos · consumo de RAM mínimo
+- Espacio de usuario, red y almacenamiento independientes
+- MV ligera, sin duplicar el kernel
+- Arranque en segundos, necesita poca RAM
 
 **Ejemplo:** LXC *(Linux Containers)*
 
@@ -136,16 +128,14 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 
 </div>
 
-<div class="alerta alerta-warning" style="margin-top:0.6rem">
-<span>⚠️</span><div>Los contenedores solo soportan sistemas <strong>Linux</strong> — comparten el kernel del host. No pueden correr Windows ni otros SO.</div>
-</div>
+
 ---
 
 ## ¿Qué es Proxmox VE?
 
 **Proxmox Virtual Environment** es una plataforma de virtualización de código abierto basada en Debian que integra en una sola interfaz web:
 
-<div class="cols-2" style="margin-top:0.8rem">
+<div class="cols-2" style="margin-top:0.2rem">
 
 <div>
 
@@ -153,8 +143,8 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 
 - Hipervisor **KVM** para máquinas virtuales completas
 - **LXC** para contenedores Linux ligeros
-- Gestión de **almacenamiento** (local, Ceph, NFS, iSCSI…)
-- Gestión de **redes** (bridges, VLANs, SDN)
+- **Almacenamiento** (local, Ceph, NFS, iSCSI…)
+- **Redes** (bridges, VLANs, SDN)
 - **Clúster** y alta disponibilidad
 - **Backups** integrados con Proxmox Backup Server
 
@@ -165,10 +155,10 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 ### Características destacadas
 
 <div class="alerta alerta-ok"><span>✅</span><div>Interfaz web completa — sin cliente adicional</div></div>
-<div class="alerta alerta-ok" style="margin-top:0.5rem"><span>✅</span><div>Código abierto — licencia AGPL</div></div>
-<div class="alerta alerta-ok" style="margin-top:0.5rem"><span>✅</span><div>API REST completa para automatización</div></div>
-<div class="alerta alerta-ok" style="margin-top:0.5rem"><span>✅</span><div>Comunidad activa y excelente documentación</div></div>
-<div class="alerta alerta-warning" style="margin-top:0.5rem"><span>⚠️</span><div>Soporte empresarial de pago opcional</div></div>
+<div class="alerta alerta-ok" style="margin-top:0.1rem"><span>✅</span><div>Código abierto — licencia AGPL</div></div>
+<div class="alerta alerta-ok" style="margin-top:0.1rem"><span>✅</span><div>API REST completa para automatización</div></div>
+<div class="alerta alerta-ok" style="margin-top:0.1rem"><span>✅</span><div>Comunidad activa y excelente documentación</div></div>
+<div class="alerta alerta-warning" style="margin-top:0.1rem"><span>⚠️</span><div>Soporte empresarial de pago opcional</div></div>
 
 </div>
 
@@ -197,10 +187,9 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 └─────────────────────────────┘
 ```
 
-- Hardware **completamente emulado** (QEMU): red, disco, vídeo…
-- Drivers **`virtio`** paravirtualizados → rendimiento casi nativo
+- Hardware **completamente emulado** (**QEMU**)
+- Dispositivos paravirtualizados (**virtio**)
 - Cualquier SO: Linux, Windows, BSD...
-- Snapshots y clonación incluidos
 
 </div>
 
@@ -244,15 +233,15 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 
 ## Comparativa general
 
-| Característica | **Proxmox VE** | OpenStack | VMware vSphere | oVirt |
+| Característica | Proxmox VE | OpenStack | VMware vSphere | oVirt |
 |:---------------|:--------------:|:---------:|:--------------:|:-----:|
 | Código abierto | ✅ | ✅ | ❌ | ✅ |
 | Interfaz web integrada | ✅ | ⚠️ compleja | ✅ | ✅ |
 | Curva de aprendizaje | Baja | Muy alta | Media | Media |
 | KVM + LXC | ✅ | Solo KVM | ❌ | Solo KVM |
 | Clúster y HA | ✅ | ✅ | ✅ | ✅ |
-| Apto para educación | ✅✅ | ⚠️ | ⚠️ coste | ⚠️ |
-| Instalación rápida | ✅ | ❌ semanas | ❌ | ❌ |
+| Apto para educación | ✅✅ | ✅ | ⚠️ coste | ⚠️ |
+| Instalación rápida | ✅ | ⚠️ | ❌ | ❌ |
 
 ---
 
@@ -265,7 +254,7 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 ### OpenStack
 
 - Plataforma de **IaaS** (*Infrastructure as a Service*)
-- Implementa los conceptos de **cloud computing** sobre hardware propio
+- **Cloud Computing** sobre hardware propio
 - El usuario consume recursos como en AWS o Azure, pero en privado
 - Abstrae completamente el hipervisor subyacente
 - Arquitectura distribuida de servicios: Nova, Neutron, Cinder, Glance…
@@ -290,6 +279,7 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 <div class="alerta alerta-info" style="margin-top:0.8rem">
 <span>ℹ️</span><div>Aunque ambas permiten gestionar máquinas virtuales, parten de concepciones distintas: OpenStack modela una <strong>nube</strong>; Proxmox VE es un <strong>hipervisor gestionado</strong>. En un centro con ASIR, las dos tienen cabida.</div>
 </div>
+
 ---
 
 ## ¿Por qué Proxmox VE para un centro educativo?
@@ -301,9 +291,9 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 ### Para el alumno
 
 - Entorno **propio y aislado**
-- Acceso desde el aula y desde casa
+- Acceso desde el **aula y desde casa**
 - Aprende con tecnología usada en la **industria**
-- Puede romper y recrear sin consecuencias
+- Puede **romper y recrear** sin consecuencias
 
 </div>
 
@@ -312,9 +302,9 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 ### Para el profesor
 
 - Despliegue de entornos en **minutos**
-- Plantillas reutilizables por módulo
-- Sin licencias de pago
-- Panel web accesible desde cualquier navegador
+- **Plantillas** reutilizables por módulo
+- Sin **licencias** de pago
+- **Panel web** accesible desde cualquier navegador
 
 </div>
 
@@ -323,9 +313,9 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 ### Para el centro
 
 - Hardware propio → **soberanía tecnológica**
-- Coste reducido (open source)
-- Escalable añadiendo nodos
-- Comunidad activa y documentación excelente
+- Coste reducido (**open source**)
+- **Escalable** añadiendo nodos
+- **Comunidad** activa y **documentación** excelente
 
 </div>
 
@@ -376,47 +366,10 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 - Reflexión: ¿cómo llevar estos beneficios educativos a otros ciclos?
 
 **2022 — Incorporación de Proxmox VE**
-- Coexistencia con OpenStack desde el primer momento
+- Coexistencia con OpenStack
 - Proxmox VE se introduce en SMR y 1º ASIR
 
 **2026 — Uso complementario consolidado**
-
-</div>
-
-</div>
-
----
-
-## OpenStack en el IES (2011–hoy)
-
-<div class="cols-2" style="margin-top:0.8rem">
-
-<div>
-
-### Lo que ha aportado
-
-- Enseñanza real de conceptos de **nube privada** e IaaS
-- Gestión de proyectos, usuarios y cuotas
-- Redes virtuales con Neutron (SDN)
-- Almacenamiento de objetos con Swift
-- Primer contacto con **infraestructura como código**
-
-### Hoy
-
-- Instalación y administración **notablemente simplificadas**
-- Plataforma principal en **2º ASIR**
-- Referencia para enseñar cloud computing real
-
-</div>
-
-<div>
-
-### Sus retos en educación
-
-<div class="alerta alerta-warning"><span>⚠️</span><div>Curva de aprendizaje alta — exige conocimientos previos sólidos</div></div>
-<div class="alerta alerta-warning" style="margin-top:0.5rem"><span>⚠️</span><div>Instalación y mantenimiento costosos en tiempo</div></div>
-<div class="alerta alerta-warning" style="margin-top:0.5rem"><span>⚠️</span><div>Poco adecuado para alumnos de ciclos de grado medio</div></div>
-<div class="alerta alerta-warning" style="margin-top:0.5rem"><span>⚠️</span><div>No incluye virtualización ligera (LXC)</div></div>
 
 </div>
 
@@ -460,19 +413,6 @@ OpenStack y Proxmox VE **conviven** en el centro. Cada uno se usa donde aporta m
 
 </div>
 
-### Ventajas percibidas de inmediato
-
-<div class="alerta alerta-ok"><span>✅</span><div>Panel web intuitivo</div></div>
-<div class="alerta alerta-ok" style="margin-top:0.4rem"><span>✅</span><div>VM y contenedores en la misma plataforma</div></div>
-<div class="alerta alerta-ok" style="margin-top:0.4rem"><span>✅</span><div>Clonación de plantillas en segundos</div></div>
-<div class="alerta alerta-ok" style="margin-top:0.4rem"><span>✅</span><div>Snapshots antes de cada práctica</div></div>
-<div class="alerta alerta-ok" style="margin-top:0.4rem"><span>✅</span><div>Backups automatizados</div></div>
-<div class="alerta alerta-ok" style="margin-top:0.4rem"><span>✅</span><div>Acceso noVNC sin cliente adicional</div></div>
-
-</div>
-
-</div>
-
 ---
 
 ## Impacto en las metodologías educativas
@@ -481,41 +421,63 @@ OpenStack y Proxmox VE **conviven** en el centro. Cada uno se usa donde aporta m
 
 <div>
 
-### Antes
+### Para los profesores
 
-- Entornos compartidos → interferencias entre alumnos
-- El profesor tenía que preparar los entornos manualmente
-- Prácticas limitadas por el tiempo de despliegue
-- Recuperación tras un error: horas
-
-### Ahora con Proxmox VE
-
-- Cada alumno tiene su **pool de recursos propio**
-- Clonación de plantilla → entorno listo en **2 minutos**
-- El alumno puede **borrar y recrear** sin pedir permiso
-- Snapshot antes de la práctica → restauración en **30 segundos**
+- Plataforma que ha impulsado el estudio de tecnologías relacionadas: **KVM, LVM, iSCSI, SDN, Ansible...
+- Acceso permanente a las máquinas de los alumnos → **corrección y seguimiento** mucho más ágil
+- Posibilidad de diseñar **proyectos intermodulares** con continuidad en el tiempo
+- El profesor prepara plantillas una vez → las reutiliza cada curso
 
 </div>
 
 <div>
 
-### Nuevas posibilidades pedagógicas
+### Para los alumnos
 
-<span class="badge badge-blue">Escenarios complejos</span>
+- Plataforma propia donde crear **diferentes escenarios** de prácticas
+- Obtención de máquinas de forma **ágil**: clonar una plantilla lleva minutos
+- Escenarios **reproducibles**: todos parten del mismo estado exacto
+- **Sin dependencia** del equipo personal del alumno — solo hace falta un navegador
 
-Redes con varios equipos interconectados, inaccesibles hace unos años por coste o complejidad.
+</div>
 
-<span class="badge badge-green">Reproducibilidad</span>
+</div>
 
-Todos los alumnos parten del mismo estado exacto al inicio de cada práctica.
+---
 
-<span class="badge badge-purple">Autonomía del alumno</span>
+## Nuevas posibilidades pedagógicas
 
-El alumno gestiona su propio entorno: crea, destruye, configura. Aprende haciendo.
+<div class="cols-2" style="margin-top:1rem">
 
-<span class="badge badge-yellow">Continuidad</span>
+<div class="card card-blue">
 
-Las máquinas virtuales persisten entre clases. El trabajo no se pierde.
+### Escenarios complejos
+
+Redes con varios equipos interconectados que antes eran inviables por coste o por las limitaciones del hardware de los alumnos.
+
+</div>
+
+<div class="card card-green">
+
+### Proyectos con continuidad
+
+Las máquinas persisten entre clases y entre módulos. Un proyecto puede crecer durante semanas o cruzar varios módulos del ciclo.
+
+</div>
+
+<div class="card card-purple">
+
+### Autonomía y aprendizaje activo
+
+El alumno crea, configura y destruye su propio entorno. Si algo falla, restaura el snapshot y sigue. Aprende **haciendo**, sin miedo a romper nada.
+
+</div>
+
+<div class="card card-yellow">
+
+### Evaluación y corrección
+
+El profesor tiene acceso directo a las máquinas de cada alumno en cualquier momento — desde el aula o desde casa.
 
 </div>
 
@@ -536,24 +498,26 @@ Las máquinas virtuales persisten entre clases. El trabajo no se pierde.
 
 ## Descripción general del entorno
 
+### IES Gonzalo Nazareno · Dos Hermanas
+
 <div class="cols-3" style="margin-top:1.2rem">
 
 <div class="card card-blue kpi">
-<div class="valor"><!-- TODO --></div>
-<div class="etiqueta">Aulas</div>
-<div class="sublabel">Con acceso a Proxmox</div>
+<div class="valor">110</div>
+<div class="etiqueta">Alumnos</div>
+<div class="sublabel">Total de ciclos formativos</div>
 </div>
 
 <div class="card card-green kpi">
-<div class="valor"><!-- TODO --></div>
-<div class="etiqueta">Alumnos</div>
-<div class="sublabel">Usuarios activos</div>
+<div class="valor">60</div>
+<div class="etiqueta">Usuarios activos</div>
+<div class="sublabel">En Proxmox VE</div>
 </div>
 
 <div class="card card-purple kpi">
-<div class="valor"><!-- TODO --></div>
-<div class="etiqueta">Módulos</div>
-<div class="sublabel">Que usan Proxmox VE</div>
+<div class="valor">10</div>
+<div class="etiqueta">Profesores</div>
+<div class="sublabel">Responsables</div>
 </div>
 
 </div>
@@ -562,20 +526,22 @@ Las máquinas virtuales persisten entre clases. El trabajo no se pierde.
 
 <div>
 
-### Módulos que usan Proxmox VE
+### Ciclos Formativos
 
-- <!-- TODO: listar módulos (ej. ASIR, SMR, DAM...) -->
+- **Grado superior:** ASIR
+- **Grado medio:** SMR
 
 </div>
 
 <div>
 
-### Versión en producción
+### Proxmox VE: <span class="badge badge-blue">Proxmox VE 9.0.6</span>
 
-<span class="badge badge-blue">Proxmox VE <!-- TODO: versión --></span>
+- Dell PowerEdge R440
+- Intel Xeon Silver 4208 (16 núcleos)
+- 128 GB RAM
+- Almacenamiento local : 3.7 TB
 
-- Política de actualizaciones: <!-- TODO -->
-- Repositorio: `pve-no-subscription` / enterprise
 
 </div>
 
@@ -583,31 +549,17 @@ Las máquinas virtuales persisten entre clases. El trabajo no se pierde.
 
 ---
 
-## Servidores físicos del CPD
+<div class="cols-2" style="margin-top:0rem; align-items:center; gap:1rem">
 
-| Nodo | Modelo | CPU | RAM | Almacenamiento |
-|:-----|:-------|:----|:----|:---------------|
-| pve1 | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
-| pve2 | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
-| pve3 | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> | <!-- TODO --> |
+<div style="text-align:center">
 
-<div class="cols-2" style="margin-top:1rem">
-
-<div>
-
-### Configuración de los nodos
-
-- Modo de operación: <!-- TODO: standalone / clúster -->
-- Migración en vivo: <!-- TODO: sí/no -->
-- Alta disponibilidad: <!-- TODO: configurada/planificada -->
+![height:580px](img/servidores1.png)
 
 </div>
 
-<div>
+<div style="text-align:center">
 
-<div class="alerta alerta-info">
-<span>ℹ️</span><div>Con un solo nodo Proxmox VE ya es completamente funcional. El clúster añade redundancia y migración en vivo pero no es imprescindible para empezar.</div>
-</div>
+![height:580px](img/servidores2.png)
 
 </div>
 
@@ -615,117 +567,36 @@ Las máquinas virtuales persisten entre clases. El trabajo no se pierde.
 
 ---
 
-## Diagrama de infraestructura
+## Acceso a la infraestructura
 
-```
-                    Internet
-                       │
-               ┌───────▼────────┐
-               │   Firewall /   │
-               │  Proxy inverso │
-               └───────┬────────┘
-                        │
-               ┌────────▼───────┐
-               │    Switch CPD  │  VLANs: gestión / alumnos / storage
-               └──┬──────┬──────┘
-          ┌───────┘      └──────────┐
-   ┌──────▼──────┐          ┌───────▼──────┐
-   │   Nodo pve1  │  . . .   │   Nodo pveN  │
-   │  KVM + LXC  │          │  KVM + LXC  │
-   └──────┬──────┘          └───────┬──────┘
-          └──────────┬──────────────┘
-               ┌─────▼──────┐
-               │ Almacena-  │  Local ZFS / Ceph / NFS
-               │  miento    │
-               └────────────┘
-```
+### Desde el aula
 
-<!-- TODO: sustituir por diagrama real del centro -->
+* Red interna del departamento de informática: 172.22.0.0/16
+* Servidor DHCP en la red
+* Máquina linux hace de router/NAT. Gateway: 172.22.0.1
+* Servidor Proxmox VE, conectado a esta red por un bridge virtual (**vmbr0**)
+* Todas las MV y contenedores conectados al **vmbr0**.
+    * Se configuran con nuestro servidor DHCP
+    * Acceso al exterior y acceso desde el aula
+* Acceso a la web de Proxmox VE de menera interna usando un proxy inverso (https://proxmox.gonzalonazareno.org)
+* El nombre `proxmox.gonzalonazareno.org` apunta a la dirección IP del servidor.
 
 ---
 
-## Red interna del CPD
+## Acceso a la infraestructura
 
-<div class="cols-2" style="margin-top:0.8rem">
+### Desde casa
 
-<div>
-
-### Switches y conectividad
-
-- Switch principal: <!-- TODO: modelo -->
-- Velocidad de enlace entre nodos: <!-- TODO: 1/10/25 GbE -->
-- Red de almacenamiento separada: <!-- TODO: sí/no -->
-
-### VLANs configuradas
-
-| VLAN | Uso |
-|:-----|:----|
-| <!-- TODO --> | Gestión Proxmox |
-| <!-- TODO --> | Máquinas de alumnos |
-| <!-- TODO --> | Almacenamiento / Ceph |
-| <!-- TODO --> | Acceso externo |
-
-</div>
-
-<div>
-
-### Redes en Proxmox VE
-
-- Bridge principal: `vmbr0`
-- Bridge de prácticas: `vmbr1` (aislado)
-- Soporte de VLANs con `vlan-aware: yes`
-
-<div class="alerta alerta-info">
-<span>ℹ️</span><div>Las redes internas de prácticas permiten a los alumnos montar topologías complejas sin afectar a la red real del centro.</div>
-</div>
-
-</div>
-
-</div>
+* Desde el centro: acceso a Internet controlado por un cortafuego corporativo.
+* PROBLEMA: Desde casa no podemos acceder a la infraestructura del centro.
+* SOLUCIÓN: **VPS** externo conectado con la red del departamento con una VPN (**openvpn**)
+    * Petición de puerto abierto a ANDARED
+    * Todas las peticiones que llegan a la VPN se reenvían a la red interna: proxy inverso
+    * El nombre `proxmox.gonzalonazareno.org` apunta a la dirección IP del VPS
+    * Los alumnos de ASIR acceden de forma remota (**SSH / RDP**) por medio de una **VPN** conectada al **VPS**
+    * Los alumnos de SMR puede acceder por la aplicación web o usando Guacamole
 
 ---
-
-## Almacenamiento
-
-<div class="cols-2" style="margin-top:0.8rem">
-
-<div>
-
-### Tipos de almacenamiento en uso
-
-| Storage | Tipo | Uso |
-|:--------|:-----|:----|
-| `local` | Dir / ZFS | ISOs, backups |
-| `local-lvm` | LVM-thin | Discos de VM y CT |
-| <!-- TODO --> | Ceph / NFS | <!-- TODO --> |
-
-### Capacidad total
-
-- Almacenamiento bruto: <!-- TODO --> TB
-- Disponible para VMs: <!-- TODO --> TB
-- Política de cuotas por alumno: <!-- TODO -->
-
-</div>
-
-<div>
-
-### Tipos de disco
-
-- <!-- TODO: SSD NVMe / SAS / SATA -->
-
-### Consideraciones
-
-<div class="alerta alerta-ok"><span>✅</span><div>ZFS ofrece snapshots instantáneos y compresión transparente</div></div>
-<div class="alerta alerta-warning" style="margin-top:0.5rem"><span>⚠️</span><div>Ceph requiere mínimo 3 nodos para producción</div></div>
-<div class="alerta alerta-info" style="margin-top:0.5rem"><span>ℹ️</span><div>LVM-thin es la opción más común en instalaciones con un solo nodo</div></div>
-
-</div>
-
-</div>
-
----
-
-## Acceso de los alumnos
 
 <div class="cols-2" style="margin-top:0.8rem">
 
@@ -733,11 +604,26 @@ Las máquinas virtuales persisten entre clases. El trabajo no se pierde.
 
 ### Desde el aula
 
-1. El alumno abre el navegador
-2. Accede a `https://proxmox.gonzalonazareno.org`
-3. Se autentica con sus credenciales LDAP
-4. Gestiona sus VMs desde la interfaz web
-5. Accede a la consola vía **noVNC** (sin cliente)
+```
+┌─────────────────────────────────────┐
+│  Red Departamento: 172.22.0.0/16    │
+├─────────────────────────────────────┤
+│  [DHCP]  [Router 172.22.0.1]        │
+├──────────────┬──────────────────────┤
+│              │                      │
+│        [vmbr0 bridge]               │
+│     Proxmox VE (host)               │
+│    ┌────────────┬────────────┐      │
+│    │ VM/CT 1    │ VM/CT 2    │ ...  │
+│    │(172.22.x.x)│(172.22.x.x)│      │
+│    └────────────┴────────────┘      │
+│                                     │
+│  https://proxmox.gonzalonazareno    │
+│  (proxy inverso interno)            │
+└─────────────────────────────────────┘
+        │
+    Internet
+```
 
 </div>
 
@@ -745,65 +631,93 @@ Las máquinas virtuales persisten entre clases. El trabajo no se pierde.
 
 ### Desde casa
 
-<div class="alerta alerta-info">
-<span>ℹ️</span><div>Acceso remoto disponible mediante:</div>
+```
+┌──────────────────────────┐
+│  Alumno (casa)           │
+│  Internet corporativo    │
+└────────────┬─────────────┘
+             │
+┌────────────▼──────────────┐
+│  VPS externo              │
+│  (proxy inverso público)  │
+│  OpenVPN endpoint         │
+│ proxmox.gonzalonazareno   │
+└────────────┬──────────────┘
+             │ VPN (openvpn)
+             │ Puerto abierto ANDARED
+┌────────────▼───────────────────┐
+│ Red departamento 172.22.0.0/16  │
+│                                 │
+│  [DHCP]  [Router 172.22.0.1]    │
+│         [Proxmox + vmbr0]       │
+│      [VMs/CTs]                  │
+└─────────────────────────────────┘
+```
+
 </div>
 
-- **Proxy inverso** (Nginx / Caddy) con certificado TLS
-- <!-- TODO: VPN / Guacamole / acceso directo con firewall -->
-- Misma experiencia que desde el aula
+</div>
+
+
+---
+
+## Almacenamiento y redes disponibles en Proxmox VE
+
+<div class="cols-2" style="margin-top:1rem">
+
+<div>
+
+### Almacenamiento
+
+**`local`** (Directory)
+- Backups
+- Imágenes ISO
+- Plantillas de CT
+
+**`local-lvm`** (LVM-Thin) (3,7 TB)
+- Discos de máquinas virtuales
+- Sistemas de ficheros de CTs
+- Crecimiento automático
 
 </div>
 
+<div>
+
+### Redes virtuales
+
+**`vmbr0`** (Linux Bridge)
+- Bridge virtual para VMs y CTs
+- DHCP automático (172.22.x.x)
+- Accesibles desde la red local
+- Por defecto: todas las VMs/CTs aquí
+- Tenemos más bridge para las prácticas 
+
 </div>
 
-<div class="alerta alerta-ok" style="margin-top:1rem">
-<span>✅</span><div>El acceso por <strong>noVNC</strong> integrado en Proxmox VE elimina la necesidad de instalar cualquier software en el equipo del alumno. Solo hace falta un navegador moderno.</div>
 </div>
 
 ---
 
-## Seguridad perimetral
+<!-- _class: capitulo -->
+<!-- _paginate: false -->
 
-<div class="cols-3" style="margin-top:1.2rem">
 
-<div class="card card-blue">
+<p class="numero">05</p>
 
-### Firewall
+# DEMO 1: Acceso a nuestro PROXMOX VE
 
-- <!-- TODO: pfSense / nftables / otro -->
-- Reglas de entrada/salida por VLAN
-- Aislamiento entre redes de alumnos
-- Proxmox FW interno por VM
-
-</div>
-
-<div class="card card-green">
-
-### Proxy inverso
-
-- <!-- TODO: Nginx / Caddy / HAProxy -->
-- Terminación TLS centralizada
-- Certificados **Let's Encrypt** (automáticos)
-- Oculta puertos internos de Proxmox
-
-</div>
-
-<div class="card card-purple">
-
-### Autenticación
-
-- Directorio **LDAP** del centro
-- Roles y permisos por usuario/grupo
-- Sin contraseñas locales en Proxmox
-- Registro de acciones (audit log)
-
-</div>
-
-</div>
+## proxmox.gonzalonazareno.org
 
 ---
 
+## Recursos
+
+* [Cursoo de introducción a Proxmox VE (CEP Casteilleja de la Cuesta)](https://github.com/iesgn/curso_proxmox_cep)
+  * Capítulo 1: Introducción a la virtualización con Proxmox VE
+  * Capítulo 2: Instalación de Proxmox VE
+* Prácticas con alumnos:
+  * [Proxmox VE: Introducción a la virtualización](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/intro_virt_proxmox.pdf)
+---
 <!-- _class: cierre -->
 <!-- _paginate: false -->
 
@@ -812,7 +726,7 @@ Las máquinas virtuales persisten entre clases. El trabajo no se pierde.
 ## Sesión 2 → Uso básico de Proxmox VE
 
 <div style="margin-top:2rem; display:flex; gap:2rem; justify-content:center; font-size:0.85rem; color:#64748b">
-  <span>📧 josedom24@gmail.com</span>
+  <span>📧 José Domingo Muñoz</span>
   <span>🏫 IES Gonzalo Nazareno · Dos Hermanas</span>
-  <span>🌐 proxmox.com/proxmox-ve</span>
+  <span>🌐 https://github.com/josedom24/curso_proxmox_2026#</span>
 </div>
