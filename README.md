@@ -59,6 +59,7 @@ Cursos Proxmox VE, Entornos de Virtualización para Centros Educativos.
 * Configuración de los usuarios (servidor LDAP) y permisos necesarios.
 * Configuración de las imágenes preconfiguradas para su clonación.
 * Configuración de máquinas virtuales usando cloud-init
+* Creación de imágenes con cloud-init
 * Configuración de acceso mediante proxy inverso
 * Scripts de administración: instrucciones de línea de comandos. 
 * Próximos pasos:
