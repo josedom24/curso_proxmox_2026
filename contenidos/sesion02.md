@@ -1,6 +1,7 @@
 ---
 marp: true
 theme: profesional
+title: "Proxmox VE"
 paginate: true
 header: 'Proxmox VE · Sesión 2 — Uso básico de Proxmox VE'
 ---
