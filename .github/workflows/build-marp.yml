@@ -72,3 +72,10 @@ jobs:
           else
             echo "No changes to commit"
           fi
+
+      - name: Trigger GitHub Pages rebuild
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          gh api repos/${{ github.repository }}/pages/builds -X POST
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
