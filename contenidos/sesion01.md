@@ -14,7 +14,12 @@ header: 'Proxmox VE · Sesión 1 — Introducción a la virtualización con Prox
 
 ## Sesión 1 · Introducción a la virtualización con Proxmox VE
 
-<p>José Domingo Muñoz &nbsp;·&nbsp; IES Gonzalo Nazareno &nbsp;·&nbsp; 2026</p>
+<div style="margin-top:2rem; display:flex; flex-direction:column; gap:0.5rem; justify-content:center; font-size:0.85rem; color:white">
+  <span>📧 José Domingo Muñoz</span>
+  <span>🏫 IES Gonzalo Nazareno · Dos Hermanas</span>
+  <span>🌐 <a href="https://josedom24.github.io/curso_proxmox_2026" style="color:white">josedom24.github.io/curso_proxmox_2026</a></span>
+  <span>💻 <a href="https://github.com/josedom24/curso_proxmox_2026" style="color:white">github.com/josedom24/curso_proxmox_2026</a></span>
+</div>
 
 ---
 
@@ -778,5 +783,5 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 <div style="margin-top:2rem; display:flex; gap:2rem; justify-content:center; font-size:0.85rem; color:#64748b">
   <span>📧 José Domingo Muñoz</span>
   <span>🏫 IES Gonzalo Nazareno · Dos Hermanas</span>
-  <span>🌐 https://github.com/josedom24/curso_proxmox_2026</span>
+  <span>🌐 https://josedom24.github.io/curso_proxmox_2026</span>
 </div>
