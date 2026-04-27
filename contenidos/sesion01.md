@@ -460,7 +460,7 @@ OpenStack y Proxmox VE **conviven** en el centro. Cada uno se usa donde aporta m
 
 ### Para los profesores
 
-- Plataforma que ha impulsado el estudio de tecnologías relacionadas: **KVM, LVM, iSCSI, SDN, Ansible...
+- Plataforma que ha impulsado el estudio de tecnologías relacionadas: **KVM, LVM, iSCSI, SDN, Ansible...**
 - Acceso permanente a las máquinas de los alumnos → **corrección y seguimiento** mucho más ágil
 - Posibilidad de diseñar **proyectos intermodulares** con continuidad en el tiempo
 - El profesor prepara plantillas una vez → las reutiliza cada curso
@@ -522,12 +522,10 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 
 ---
 
-<div>
-
 ## Ejemplos de prácticas
-* Prueba45
 
-</div>
+- Prueba45
+
 
 ---
 
@@ -613,34 +611,43 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 
 ---
 
+
+
 ## Acceso a la infraestructura
+
+
 
 ### Desde el aula
 
-* Red interna del departamento de informática: 172.22.0.0/16
-* Servidor DHCP en la red
-* Máquina linux hace de router/NAT. Gateway: 172.22.0.1
-* Servidor Proxmox VE, conectado a esta red por un bridge virtual (**vmbr0**)
-* Todas las MV y contenedores conectados al **vmbr0**
-    * Se configuran con nuestro servidor DHCP
-    * Acceso al exterior y acceso desde el aula
-* Acceso a la web de Proxmox VE de menera interna usando un proxy inverso (https://proxmox.gonzalonazareno.org)
-* El nombre `proxmox.gonzalonazareno.org` apunta a la dirección IP del servidor
+- Red interna del departamento de informática: 172.22.0.0/16
+- Servidor DHCP en la red
+- Máquina linux hace de router/NAT. Gateway: 172.22.0.1
+- Servidor Proxmox VE, conectado a esta red por un bridge virtual (**vmbr0**)
+- Todas las MV y contenedores conectados al **vmbr0**
+    - Se configuran con nuestro servidor DHCP
+    - Acceso al exterior y acceso desde el aula
+- Acceso a la web de Proxmox VE de menera interna usando un proxy inverso (https://proxmox.gonzalonazareno.org)
+- El nombre `proxmox.gonzalonazareno.org` apunta a la dirección IP del servidor
+
 
 ---
+
+<div>
 
 ## Acceso a la infraestructura
 
 ### Desde casa
 
-* Desde el centro: acceso a Internet controlado por un cortafuego corporativo.
-* PROBLEMA: Desde casa no podemos acceder a la infraestructura del centro.
-* SOLUCIÓN: **VPS** externo conectado con la red del departamento con una VPN (**openvpn**)
-    * Petición de puerto abierto a ANDARED
-    * Todas las peticiones que llegan a la VPN se reenvían a la red interna: proxy inverso
-    * El nombre `proxmox.gonzalonazareno.org` apunta a la dirección IP del VPS
-    * Los alumnos de ASIR acceden de forma remota (**SSH / RDP**) por medio de una **VPN** conectada al **VPS**
-    * Los alumnos de SMR puede acceder por la aplicación web o usando Guacamole
+- Desde el centro: acceso a Internet controlado por un cortafuego corporativo.
+- PROBLEMA: Desde casa no podemos acceder a la infraestructura del centro.
+- SOLUCIÓN: **VPS** externo conectado con la red del departamento con una VPN (**openvpn**)
+    - Petición de puerto abierto a ANDARED
+    - Todas las peticiones que llegan a la VPN se reenvían a la red interna: proxy inverso
+    - El nombre `proxmox.gonzalonazareno.org` apunta a la dirección IP del VPS
+    - Los alumnos de ASIR acceden de forma remota (**SSH / RDP**) por medio de una **VPN*- conectada al **VPS**
+    - Los alumnos de SMR puede acceder por la aplicación web o usando Guacamole
+
+</div>
 
 ---
 
@@ -774,14 +781,20 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 
 ---
 
+<div>
+
 ## Recursos
 
-* [Curso de introducción a Proxmox VE (CEP Casteilleja de la Cuesta)](https://github.com/iesgn/curso_proxmox_cep)
-  * Capítulo 1: Introducción a la virtualización con Proxmox VE
-  * Capítulo 2: Instalación de Proxmox VE
-* Prácticas con alumnos:
-  * [Proxmox VE: Introducción a la virtualización](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/intro_virt_proxmox.pdf)
+- [Curso de introducción a Proxmox VE (CEP Casteilleja de la Cuesta)](https://github.com/iesgn/curso_proxmox_cep)
+  - Capítulo 1: Introducción a la virtualización con Proxmox VE
+  - Capítulo 2: Instalación de Proxmox VE
+- Prácticas con alumnos:
+  - [Proxmox VE: Introducción a la virtualización](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/intro_virt_proxmox.pdf)
+
+</div>
+
 ---
+
 <!-- _class: cierre -->
 <!-- _paginate: false -->
 
