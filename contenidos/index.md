@@ -8,7 +8,7 @@ footer: 'José Domingo Muñoz · IES Gonzalo Nazareno · 2026'
 
 # Curso Proxmox VE (2026)
 
-## [Sesión 1: Introducción a la virtualización con Proxmox VE](contenidos/sesion01.html)
+## [Sesión 1: Introducción a la virtualización con Proxmox VE](contenidos/sesion01.html) [(pdf)](contenidos/sesion01.pdf)
 
 ## Sesión 2: Uso básico de Proxmox VE
 
