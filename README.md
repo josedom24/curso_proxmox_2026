@@ -4,7 +4,7 @@ Cursos Proxmox VE, Entornos de Virtualización para Centros Educativos.
 
 ## Contenidos
 
-### Sesión1: Introducción a la virtualización con Proxmox VE [[html](contenidos/sesion01.html)] [[pdf](contenidos/sesion01.pdf)]
+### Sesión 1: Introducción a la virtualización con Proxmox VE [[html](https://josedom24.github.io/curso_proxmox_2026/contenidos/sesion01.html)] [[pdf](https://github.com/josedom24/curso_proxmox_2026/raw/main/contenidos/sesion01.pdf)]
     * ¿Qué es la virtualización
     * Proxmox VE us otras soluciones
     * Evolución en el IES Gonzalo Nazareno
