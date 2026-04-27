@@ -1,4 +1,4 @@
----
+q---
 marp: true
 theme: profesional
 title: "Proxmox VE"
@@ -643,7 +643,7 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 - PROBLEMA: Desde casa no podemos acceder a la infraestructura del centro.
 - SOLUCIÓN: **VPS** externo conectado con la red del departamento con una VPN (**openvpn**)
     - Petición de puerto abierto a ANDARED
-    - Todas las peticiones que llegan a la VPN se reenvían a la red interna: proxy inverso
+    - Todas las peticiones que llegan al **VPS** se reenvían a la red interna: proxy inverso
     - El nombre `proxmox.gonzalonazareno.org` apunta a la dirección IP del VPS
     - Los alumnos de ASIR acceden de forma remota (**SSH / RDP**) por medio de una **VPN*- conectada al **VPS**
     - Los alumnos de SMR puede acceder por la aplicación web o usando Guacamole
