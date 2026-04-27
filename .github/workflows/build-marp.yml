@@ -1,0 +1,74 @@
+name: Build Marp Presentations
+
+on:
+  push:
+    paths:
+      - 'contenidos/**/*.md'
+      - '.marprc.yml'
+      - '.github/workflows/build-marp.yml'
+  pull_request:
+    paths:
+      - 'contenidos/**/*.md'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Marp CLI
+        run: npm install -g @marp-team/marp-cli
+
+      - name: Get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v42
+        with:
+          files: contenidos/**/*.md
+
+      - name: Build presentations
+        if: steps.changed-files.outputs.any_changed == 'true'
+        working-directory: contenidos
+        run: |
+          # Process each changed markdown file
+          for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+            # Remove 'contenidos/' prefix from the path
+            filename="${file#contenidos/}"
+            if [ -f "$filename" ]; then
+              echo "Processing: $filename"
+              # Generate HTML and PDF in the same directory
+              marp "$filename" --html -o "${filename%.*}.html"
+              marp "$filename" --pdf -o "${filename%.*}.pdf"
+            fi
+          done
+
+      - name: Move index.html to root if exists
+        run: |
+          if [ -f "contenidos/index.html" ]; then
+            echo "Moving index.html to root..."
+            mv contenidos/index.html index.html
+          fi
+
+      - name: Commit and push changes
+        if: steps.changed-files.outputs.any_changed == 'true'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          # Check if there are changes
+          if ! git diff --quiet || [ -n "$(git status --porcelain)" ]; then
+            git add contenidos/*.html contenidos/*.pdf index.html 2>/dev/null || true
+            git status
+            git commit -m "chore: build marp presentations [skip ci]" || echo "No changes to commit"
+            git push
+          else
+            echo "No changes to commit"
+          fi
