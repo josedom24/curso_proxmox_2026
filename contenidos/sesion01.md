@@ -529,6 +529,7 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 * Prueba45
 
 </div>
+
 ---
 
 <!-- _class: capitulo -->
