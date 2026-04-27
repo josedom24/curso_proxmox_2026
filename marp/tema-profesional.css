@@ -510,8 +510,3 @@ section.destacado h1 { color: var(--teal-800); }
   margin-bottom: 0.5rem;
 }
 
-/* ── Deshabilitar animaciones de fragmentos ──────────────────── */
-li {
-  animation: none !important;
-  opacity: 1 !important;
-}
