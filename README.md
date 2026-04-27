@@ -1,6 +1,6 @@
 # Curso Proxmox VE (2026)
 
-Cursos Proxmox VE, Entornos de Virtualización para Centros Educativos. 
+[Curso Proxmox VE](https://josedom24.github.io/curso_proxmox_2026/), Entornos de Virtualización para Centros Educativos. 
 
 ## Contenidos
 
