@@ -4,27 +4,12 @@ Cursos Proxmox VE, Entornos de Virtualización para Centros Educativos.
 
 ## Contenidos
 
-### Sesión1: Introducción a la virtualización con Proxmox VE
-
-* ¿Qué nos ofrece Proxmox VE?
-    * Introducción a la virtualización
-    * Qué soluciones de virtualización ofrece Proxmox VE
-* Diferencias con otros sistemas de virtualización
-    * Diferencias de Proxmox VE us OpenStack
-* Evolución de sistemas de virtualización en el IES Gonzalo Nazareno
-    * Desde 2011 utilizando OpenStack gracias a un proyecto de innovación educativa.
-    * En 2022 se introduce el uso de Proxmox VE.
-    * Estas tecnologías han producido cambios en las metodologías educativas.
-* Características e infraestructura del centro
-    * Descripción general del entorno: número de aulas, alumnos, módulos impartidos.
-    * Diagrama o esquema de la infraestructura virtualizada.
-    * Versión de Proxmox VE en uso y política de actualizaciones.
-    * Servidores físicos: modelos, CPU, RAM, almacenamiento.
-    * Red interna del CPD: switches, VLANs, velocidades.
-    * Almacenamiento: tipo de discos, pools Ceph o SAN/NAS, capacidad total.
-    * Cómo acceden los alumnos desde las aulas y desde casa.
-    * Solución de acceso remoto: Guacamole, VPN, noVNC u otras.
-    * Seguridad perimetral: firewall, proxy inverso, certificados.
+### Sesión1: Introducción a la virtualización con Proxmox VE [[html](contenidos/sesion01.html)] [[pdf](contenidos/sesion01.pdf)]
+    * ¿Qué es la virtualización
+    * Proxmox VE us otras soluciones
+    * Evolución en el IES Gonzalo Nazareno
+    * Infraestructura del centro
+    * DEMO 1: Acceso a nuestro Proxmox VE
 
 ### Sesión 2: Uso básico de Proxmox VE
 
