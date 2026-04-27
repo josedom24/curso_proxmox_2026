@@ -21,5 +21,3 @@ footer: 'José Domingo Muñoz · IES Gonzalo Nazareno · 2026'
 
 
 
-
----
