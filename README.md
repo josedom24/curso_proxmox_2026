@@ -13,17 +13,9 @@
 
 ### Sesión 2: Uso básico de Proxmox VE
 
-* Introducción al entorno de trabajo de Proxmox VE
-    * Almacenamiento y redes disponibles
-    * Conceptos necesarios: Plantillas, Clonación, Pool de recursos.
-* Introducción a la gestión de máquinas virtuales 
-    * Creación de MV desde imágenes ISO
-    * Dispositivos paravirtualizados e instalación de máquinas Windows.
-    * Instalación de Qemu-guest-agent en las máquinas virtuales
-    * Acceso a las máquinas virtuales
-* Introducción a la gestión de contenedores
-    * Plantillas de contenedores
-    * Creación de contenedores
+* DEMO 1: Gestión de máquinas virtuales Linux
+* DEMO 2: Gestión de máquinas virtuales Windows
+* DEMO 3: Gestión de contenedores LXC
 
 ### Sesión 3: Almacenamiento y redes en Proxmox VE
 
