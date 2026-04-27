@@ -524,7 +524,8 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 
 ## Ejemplos de prácticas
 
-* Prueba3
+* Prueba4
+
 ---
 
 <!-- _class: capitulo -->

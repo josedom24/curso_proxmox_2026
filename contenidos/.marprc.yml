@@ -1,7 +1,6 @@
 html: true
 theme: ../marp/tema-profesional.css
 size: 16:9
-transition: none
 options:
   allowLocalFiles: true
   imagePaths:
