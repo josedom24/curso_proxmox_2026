@@ -657,7 +657,7 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
     - Petición de puerto abierto a ANDARED
     - Todas las peticiones que llegan al **VPS** se reenvían a la red interna: proxy inverso
     - El nombre `proxmox.gonzalonazareno.org` apunta a la dirección IP del VPS
-    - Los alumnos de ASIR acceden de forma remota (**SSH / RDP**) por medio de una **VPN*- conectada al **VPS**
+    - Los alumnos de ASIR acceden de forma remota (**SSH / RDP**) por medio de una **VPN**, conectada al **VPS**
     - Los alumnos de SMR puede acceder por la aplicación web o usando Guacamole
 
 </div>
