@@ -5,10 +5,10 @@
 ## Contenidos
 
 ### Sesión 1: Introducción a la virtualización con Proxmox VE [[html](https://josedom24.github.io/curso_proxmox_2026/contenidos/sesion01.html)] [[pdf](https://github.com/josedom24/curso_proxmox_2026/raw/main/contenidos/sesion01.pdf)]
-* ¿Qué es la virtualización
+* ¿Qué es la virtualización?
 * Proxmox VE us otras soluciones
-* Evolución en el IES Gonzalo Nazareno
-* Infraestructura del centro
+* Evolución de sistemas de virtualización en el IES Gonzalo Nazareno
+* Infraestructura de virtualización en el IES Gonzalo Nazareno
 * DEMO 1: Acceso a nuestro Proxmox VE
 
 ### Sesión 2: Uso básico de Proxmox VE

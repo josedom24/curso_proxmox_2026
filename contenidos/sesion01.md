@@ -32,7 +32,7 @@ header: 'Proxmox VE · Sesión 1 — Introducción a la virtualización con Prox
 
 # ¿Qué es la virtualización?
 
-## Conceptos clave y soluciones de Proxmox VE
+## Máquinas virtuales y contenedores
 
 ---
 
@@ -349,7 +349,7 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 
 <p class="numero">03</p>
 
-# Evolución en el IES Gonzalo Nazareno
+# Evolución de sistemas de virtualización en el IES Gonzalo Nazareno
 
 ## De OpenStack a Proxmox VE
 
@@ -547,7 +547,7 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 
 <p class="numero">04</p>
 
-# Infraestructura del centro
+# Infraestructura de virtualización en el IES Gonzalo Nazareno
 
 ## Hardware, red, almacenamiento y acceso
 
