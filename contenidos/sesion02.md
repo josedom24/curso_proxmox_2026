@@ -292,6 +292,87 @@ Demonio que permite comunicación con Proxmox: muestra la **IP**, facilita apaga
 
 ---
 
+## Contenedores en Proxmox
+
+<div class="cols-2">
+<div class="card card-blue">
+
+**¿Qué es un contenedor?**
+Conjunto de procesos que se ejecutan en el host con su propio **sistema de ficheros** y **configuración de red**. Se puede considerar una **mini máquina virtual**.
+
+- Comparten el **kernel del host** → más ligeros y rápidos.
+- Todos los contenedores son **Linux**.
+
+</div>
+<div class="card card-green">
+
+**Ejemplos:** Docker, LXC, ...
+
+**En Proxmox** trabajamos con contenedores **LXC**.
+
+Mayor eficiencia que las MV a cambio de menor aislamiento respecto al host.
+
+</div>
+</div>
+
+---
+
+## Crear un contenedor
+
+Desde el botón **Crear CT** lanzamos el asistente de configuración.
+
+<div class="cols-2">
+<div class="card card-purple">
+
+**Campos obligatorios**
+- **Nombre del Host** — identificador del contenedor.
+- **Conjunto de recursos** (si lo estamos utilizando).
+- **Contraseña** del usuario **root**.
+
+</div>
+<div class="card card-blue">
+
+**Opcional**
+- **Clave SSH pública** para acceso por SSH sin contraseña.
+
+</div>
+</div>
+
+---
+
+## Elegimos el sistema operativo (Plantilla)
+
+<div class="cols-2">
+<div class="card card-yellow">
+
+**¿Qué es una plantilla?**
+Imagen de SO preconfigurada que sirve de base para el contenedor. Se descarga del repositorio de Proxmox y se almacena en el **almacenamiento local**.
+
+</div>
+<div class="card card-red">
+
+**Configuración del contenedor** (similar a las MV):
+- **Disco** — tamaño del almacenamiento.
+- **CPU** — número de cores.
+- **Memoria** — RAM asignada.
+- **Red** — interfaz y configuración de red.
+
+</div>
+</div>
+
+<div class="alerta alerta-info">ℹ️ La gestión y eliminación de contenedores es <strong>similar a la de las MV</strong>.</div>
+
+---
+
+## Inicio del contenedor
+
+<div class="alerta alerta-warning">⚠️ Al crear el contenedor, el único usuario disponible es <strong>root</strong>.</div>
+
+- Iniciamos el contenedor desde el panel de control.
+- Accedemos a él mediante la **Consola** de Proxmox o por **SSH**.
+
+---
+
 <!-- _class: cierre -->
 <!-- _paginate: false -->
 
