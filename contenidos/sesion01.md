@@ -537,7 +537,7 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 </div>
 
 <div class="alerta alerta-info" style="margin-top:0.8rem">
-<span>ℹ️</span><div>Los escenarios siempre son <strong>accesibles</strong> desde cualquier equipo cliente.</div>
+<span>ℹ️</span><div>Los escenarios siempre son <strong>accesibles</strong> desde cualquier equipo cliente (desde el centro y desde casa).</div>
 </div>
 
 ---
