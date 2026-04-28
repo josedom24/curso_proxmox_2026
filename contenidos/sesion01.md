@@ -525,8 +525,20 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
 
 ## Ejemplos de prácticas
 
-- Prueba45
+- Instalación de sistemas operativos con BIOS/UEFI
+- Almacenamiento: Particionamiento, formateo, gestión de sistemas de ficheros, LVM, RAID, ...
+- Administración  de servidores durante largo del tiempo
+- Plataformas de desarrollo preconfiguradas.
+- Instalación de un servidor (por ejemplo, base de datos) y los alumnos acceden como clientes
+- ...
 
+<div class="alerta alerta-info" style="margin-top:0.8rem">
+<span>ℹ️</span><div>Conseguimos independencia de los equipos de los alumnos (<strong>igualdad tecnológica</strong>).</div>
+</div>
+
+<div class="alerta alerta-info" style="margin-top:0.8rem">
+<span>ℹ️</span><div>Los escenarios siempre son <strong>accesibles</strong> desde cualquier equipo cliente.</div>
+</div>
 
 ---
 
