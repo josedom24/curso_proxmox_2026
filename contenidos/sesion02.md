@@ -374,8 +374,6 @@ Imagen de SO preconfigurada que sirve de base para el contenedor. Se descarga de
 
 ---
 
----
-
 ## Recursos
 
 - [Curso de introducción a Proxmox VE (CEP Castilleja de la Cuesta)](https://github.com/iesgn/curso_proxmox_cep)
@@ -384,10 +382,8 @@ Imagen de SO preconfigurada que sirve de base para el contenedor. Se descarga de
 - Prácticas con alumnos:
   - [Práctica 1: Instalación de una máquina Linux en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica1.pdf)
   - [Práctica 2: Instalación de una máquina Windows en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica2.pdf)
+  - [Práctica 3: Trabajo con claves SSH](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica3.pdf)
   - [Práctica 6: Instalación de contenedores en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica6.pdf)
-
----
-
 
 ---
 

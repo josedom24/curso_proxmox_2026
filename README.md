@@ -19,13 +19,9 @@
 
 ### Sesión 3: Almacenamiento y redes en Proxmox VE
 
-* Gestión de almacenamiento en Proxmox VE
-* Añadir almacenamiento a las máquinas virtuales
-* Introducción a la gestión de redes con Proxmox VE
-* Clonación de máquinas virtuales
-* Convirtiendo máquinas virtuales en plantillas
-* Snapshots de máquinas virtuales
-* Copias de seguridad de máquinas virtuales
+* DEMO 1: Gestión de almacenamiento en Proxmox VE
+* DEMO 2 Introducción a la gestión de redes con Proxmox VE
+* DEMO 3: Clonación, plantillas, snapshots y backup de máquinas virtuales
 
 ### Sesión 4: Configuración especifica de Proxmox VE en el IES Gonzalo Nazareno
 
