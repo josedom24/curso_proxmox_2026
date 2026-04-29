@@ -39,7 +39,8 @@ header: 'Proxmox VE · Sesión 2 — Uso básico de Proxmox VE'
 <div class="card card-red">
 
 - Usamos el botón **Crear VM**.
-- **Nombre** obligatorio; **Conjunto de recursos** para agrupar MV, LXC y almacenamiento.
+- **Nombre** obligatorio; 
+- Si estamos usando **Conjuntos de recursos** para guardar la MV indicamos el nombre.
 - Elegimos la **ISO** del almacenamiento local.
 - Seleccionamos el **tipo de SO y versión**.
 
@@ -370,6 +371,23 @@ Imagen de SO preconfigurada que sirve de base para el contenedor. Se descarga de
 
 - Iniciamos el contenedor desde el panel de control.
 - Accedemos a él mediante la **Consola** de Proxmox o por **SSH**.
+
+---
+
+---
+
+## Recursos
+
+- [Curso de introducción a Proxmox VE (CEP Castilleja de la Cuesta)](https://github.com/iesgn/curso_proxmox_cep)
+  - Capítulo 3: Creación de máquinas virtuales
+  - Capítulo 7: Trabajando con Linux Containers
+- Prácticas con alumnos:
+  - [Práctica 1: Instalación de una máquina Linux en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica1.pdf)
+  - [Práctica 2: Instalación de una máquina Windows en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica2.pdf)
+  - [Práctica 6: Instalación de contenedores en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica6.pdf)
+
+---
+
 
 ---
 
