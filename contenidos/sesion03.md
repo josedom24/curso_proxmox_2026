@@ -27,7 +27,7 @@ header: 'Proxmox VE · Sesión 3 — Almacenamiento y redes en Proxmox VE'
 
 <p class="numero">01</p>
 
-# DEMO 1: Gestión de almacenamiento en Proxmox VE
+# Gestión de almacenamiento en Proxmox VE
 
 ## Configuración y administración de almacenamiento
 
@@ -135,7 +135,18 @@ Proxmox permite gestionar varios tipos de almacenamiento:
 
 <p class="numero">02</p>
 
-# DEMO 2: Introducción a la gestión de redes con Proxmox VE
+# DEMO 1: Gestión de discos en MV y en contenedores
+
+## Configuración y administración de almacenamiento
+
+---
+
+<!-- _class: capitulo -->
+<!-- _paginate: false -->
+
+<p class="numero">03</p>
+
+# Introducción a la gestión de redes con Proxmox VE
 
 ## Configuración de interfaces y bridges virtuales
 
@@ -242,9 +253,20 @@ Un **bridge** actúa como un conmutador virtual:
 <!-- _class: capitulo -->
 <!-- _paginate: false -->
 
-<p class="numero">03</p>
+<p class="numero">04</p>
 
-# DEMO 3: Clonación, plantillas, snapshots y backups
+# DEMO 2: Introducción a la gestión de redes con Proxmox VE
+
+## Configuración de interfaces y bridges virtuales
+
+---
+
+<!-- _class: capitulo -->
+<!-- _paginate: false -->
+
+<p class="numero">05</p>
+
+# Clonación, plantillas, snapshots y backup de máquinas virtuales
 
 ## Gestión avanzada de máquinas virtuales
 
@@ -452,6 +474,18 @@ Un **backup** es una copia de seguridad independiente, almacenada en un lugar se
 
 </div>
 </div>
+
+---
+
+<!-- _class: capitulo -->
+<!-- _paginate: false -->
+
+<p class="numero">06</p>
+
+# DEMO 3: Clonación, plantillas, snapshots y backups
+
+## Gestión avanzada de máquinas virtuales
+
 
 ---
 
