@@ -492,10 +492,14 @@ Un **backup** es una copia de seguridad independiente, almacenada en un lugar se
 ## Recursos
 
 - [Curso de introducción a Proxmox VE (CEP Castilleja de la Cuesta)](https://github.com/iesgn/curso_proxmox_cep)
-  - Capítulo 4: Almacenamiento
-  - Capítulo 5: Redes
-  - Capítulo 6: Clonación y plantillas
-  - Capítulo 8: Snapshots y backups
+  - Capítulo 4: Gestionando el almacenamiento
+  - Capítulo 5: Clonación, instantáneas y copias de seguridad
+  - Capítulo 7: Introducción a las redes en Proxmox
+- Prácticas con alumnos:
+  - [Práctica 4: Clonación, plantillas y snapshots en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica4.pdf)
+  - [Práctica 6: Instalación de contenedores en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica6.pdf)
+  - [Práctica 7: Trabajando con redes en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica7.pdf)
+  - [ráctica 8: Almacenamiento en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica8.pdf)
 
 ---
 
