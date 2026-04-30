@@ -52,7 +52,7 @@ Proxmox permite gestionar varios tipos de almacenamiento:
 ### Almacenamiento remoto
 
 - **NFS** — acceso a recursos compartidos de red
-- **iSCSI** — almacenamiento en bloque de red
+- **iSCSI** — dispositivos de bloque (discos) compartidos por red
 - **Ceph** — almacenamiento distribuido de alta disponibilidad
 
 </div>
@@ -138,6 +138,34 @@ Proxmox permite gestionar varios tipos de almacenamiento:
 # DEMO 1: Gestión de discos en MV y en contenedores
 
 ## Configuración y administración de almacenamiento
+
+---
+
+## Gestión de discos en las máquinas virtuales
+
+<div class="cols-2" style="margin-top:0.8rem">
+<div class="card card-blue">
+
+- En el apartado Hardware de cualquier máquina virtual podemos añadirle nuevos discos duros.
+- Al añadir el nuevo disco, tendremos que elegir en qué **fuente de almacenamiento** se va a guardar su información y el **tamaño del disco**.
+- Podemos comprobar que ya tenemos otros disco en la máquina virtual: podemos **particionar, formatear, montar, redimensionar**,...
+
+</div>
+<div class="card card-green">
+
+Las operaciones que podemos hacer sobre los discos:
+
+- **Despegar**: Nos permite desconectar el disco de la máquina. Aparece como **disco no usado**.
+* Un disco no usado lo podemos borrar (opción **Eliminar**), o lo podemos editar (opción **Editar**). Si lo editamos y le damos a la opción **Añadir** lo volveremos conectar a la máquina.
+* Podemos aumentar el tamaño de un disco con la opción **Disk Action -> Resize**.
+* Recuerda que el aumento de tamaño del disco es independiente del aumento del sistema de ficheros.
+
+</div>
+</div>
+
+---
+
+## Gestión de discos en los contenedores
 
 ---
 
