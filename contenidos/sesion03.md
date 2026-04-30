@@ -156,7 +156,7 @@ Proxmox permite gestionar varios tipos de almacenamiento:
 Las operaciones que podemos hacer sobre los discos:
 
 - **Despegar**: Nos permite desconectar el disco de la máquina. Aparece como **disco no usado**.
-* Un disco no usado lo podemos borrar (opción **Eliminar**), o lo podemos editar (opción **Editar**). Si lo editamos y le damos a la opción **Añadir** lo volveremos conectar a la máquina.
+* Un disco no usado lo podemos borrar (**Eliminar**), editar (**Editar**) o volver añadir (**Añadir**).
 * Podemos aumentar el tamaño de un disco con la opción **Disk Action -> Resize**.
 * Recuerda que el aumento de tamaño del disco es independiente del aumento del sistema de ficheros.
 
