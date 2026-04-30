@@ -168,7 +168,7 @@ Las operaciones que podemos hacer sobre los discos:
 ## Gestión de discos en los contenedores
 
 - Para ello escogemos el contenedor y elegimos la opción **Recursos** y añadimos un **Punto de Montaje**.
-- A continuación, elegimos la fuente de almacenamiento donde vamos a crear el volumen, su tamaño y el directorio donde se va a montar en el contenedor.
+- A continuación, elegimos la **fuente de almacenamiento** donde vamos a crear el volumen, **su tamaño** y el **directorio** donde se va a montar en el contenedor.
 - Y comprobamos que se ha montado el volumen en el directorio indicado.
 
 ---
@@ -179,7 +179,6 @@ Las operaciones que podemos hacer sobre los discos:
 <p class="numero">03</p>
 
 # Introducción a la gestión de redes con Proxmox VE
-
 ## Configuración de interfaces y bridges virtuales
 
 ---
@@ -192,23 +191,46 @@ La configuración de red se realiza a través de **bridges virtuales** que conec
 <div class="card card-blue">
 
 ### Concepto de Bridge
-
 Un **bridge** actúa como un conmutador virtual:
 - Conecta interfaces físicas y virtuales
 - Permite comunicación entre VMs/CTs
 - Acceso a la red externa
-
 </div>
 <div class="card card-purple">
 
 ### Interfaces de red
-
 - **Interfaz física** (ej: `eno1`) → conecta al hardware real
 - **Bridge virtual** (ej: `vmbr0`) → punto de conexión para VMs/CTs
 - **VLAN** — segmentación de red en el mismo bridge
+</div>
+</div>
+
+---
+
+## Dispositivos virtuales de red en el nodo
+
+Se crean a nivel de **nodo del clúster** → configuran el sistema operativo del host
+
+<div class="cols-2" style="margin-top:0.8rem">
+<div class="card card-blue">
+
+### Stack Linux nativo
+- **Linux Bridge** → switch virtual para VMs/CTs
+- **Linux Bond** → agrupa interfaces físicas (redundancia o mayor ancho de banda)
+- **Linux VLAN** → subinterfaz etiquetada (ej: `eno1.10`) para segmentar tráfico
+
+</div>
+<div class="card card-purple">
+
+### Open vSwitch (OVS)
+- **OVS Bridge** → bridge avanzado con soporte VLAN, tunneling y QoS
+- **OVS Bond** → agrupación de interfaces gestionada por OVS
+- **OVS IntPort** → puerto interno para dar IP al propio host dentro del switch virtual
 
 </div>
 </div>
+
+<div class="alerta alerta-info">ℹ️ OVS requiere instalar el paquete <code>openvswitch-switch</code>. Para entornos docentes, el stack Linux nativo es suficiente.</div>
 
 ---
 
@@ -216,18 +238,16 @@ Un **bridge** actúa como un conmutador virtual:
 
 <div class="cols-2" style="margin-top:0.8rem">
 <div class="card card-green">
-
 **Acceso a la configuración**
 - Panel izquierdo → seleccionar nodo → **Red**
 - Vista actual de interfaces y bridges
-
 </div>
-<div class="card card-yellow">
 
+<div class="card card-yellow">
 **Información disponible**
 - Estado de cada interfaz
 - Configuración de IP (estática o DHCP)
-- Bridges y VLANs activos
+- Bridges, Bonds, VLANs y OVS activos
 
 </div>
 </div>
@@ -240,7 +260,6 @@ Un **bridge** actúa como un conmutador virtual:
 
 <div class="cols-2" style="margin-top:0.8rem">
 <div class="card card-blue">
-
 **Pasos**
 1. Panel de Red → **Crear Bridge**
 2. Asignar nombre (ej: `vmbr1`)
@@ -254,9 +273,109 @@ Un **bridge** actúa como un conmutador virtual:
 - El bridge principal (`vmbr0`) conecta el host a la red
 - No eliminar ni modificar el bridge activo
 - Hacer cambios con **acceso local** disponible
+</div>
+</div>
 
+---
+
+## SDN: Software Defined Networking
+
+El SDN permite gestionar la red de forma **centralizada a nivel de clúster**, sin configurar cada nodo manualmente.
+
+<div class="cols-2" style="margin-top:0.8rem">
+<div class="card card-blue">
+
+**Cómo funciona**
+- La configuración se guarda en el sistema distribuido del clúster (`/etc/pve/sdn/`)
+- Proxmox genera automáticamente la configuración de red en cada nodo
+- Los cambios se propagan al pulsar **Apply**
+</div>
+<div class="card card-purple">
+
+**Jerarquía de conceptos**
+```
+Clúster
+└── Zonas       ← tecnología de red
+    └── VNets   ← red virtual concreta
+        └── Subnets  ← rangos IP / IPAM
+```
 </div>
 </div>
+
+---
+
+## SDN: Zonas
+
+Una **zona** define la tecnología de red subyacente. Cada VNet pertenece a una zona.
+| Tipo | Descripción |
+|---|---|
+| `Simple` | Bridge local por nodo. Sin conectividad entre nodos. |
+| `VLAN` | Segmentación por VLAN tags sobre un bridge físico existente |
+| `QinQ` | Doble etiquetado VLAN (802.1ad) |
+| `VXLAN` | Tunneling L2 sobre L3 → conecta nodos en distintas subredes |
+| `EVPN` | Enrutamiento distribuido con BGP. Requiere `frr`. |
+
+<div class="alerta alerta-warning">⚠️ La zona <strong>Simple</strong> no conecta VMs entre nodos distintos. Para eso se necesita VXLAN o EVPN.</div>
+
+---
+
+## SDN: VNets y Subnets
+
+<div class="cols-2" style="margin-top:0.8rem">
+<div class="card card-green">
+
+### VNets (Virtual Networks)
+- Red virtual concreta creada dentro de una zona
+- Aparece en cada nodo como un bridge (ej: `vnet0`)
+- Es lo que se asigna a las VMs/CTs como interfaz de red
+- Se controlan mediante permisos (`SDN.Use`)
+</div>
+
+<div class="card card-yellow">
+
+### Subnets
+- **Opcionales**: se definen dentro de una VNet
+- Permiten activar **IPAM** (asignación automática de IPs)
+- Permiten activar **DHCP** integrado
+- Definen rangos de red, gateway y DNS
+</div>
+</div>
+
+---
+
+## SDN vs Linux Bridge: ¿cuándo usar cada uno?
+
+<div class="cols-2" style="margin-top:0.8rem">
+<div class="card card-blue">
+
+### Linux Bridge (clásico)
+- Entornos de **un solo nodo**  
+- Laboratorios y **entornos docentes**  
+- Configuraciones sencillas  
+- Sin dependencias adicionales  
+</div>
+<div class="card card-purple">
+
+### SDN
+- Clústeres **multi-nodo**  
+- Gestión centralizada y consistente  
+- Redes complejas (VXLAN, EVPN)  
+- IPAM y DHCP integrados  
+</div>
+</div>
+
+<div class="alerta alerta-info">ℹ️ Para un servidor Proxmox standalone, los <strong>Linux Bridges son suficientes</strong>. El SDN aporta valor principalmente en clústeres.</div>
+
+---
+
+<!-- _class: capitulo -->
+<!-- _paginate: false -->
+
+<p class="numero">04</p>
+
+# DEMO 2: Introducción a la gestión de redes con Proxmox VE
+
+## Configuración de interfaces y bridges virtuales
 
 ---
 
@@ -279,17 +398,6 @@ Un **bridge** actúa como un conmutador virtual:
 
 </div>
 </div>
-
----
-
-<!-- _class: capitulo -->
-<!-- _paginate: false -->
-
-<p class="numero">04</p>
-
-# DEMO 2: Introducción a la gestión de redes con Proxmox VE
-
-## Configuración de interfaces y bridges virtuales
 
 ---
 
