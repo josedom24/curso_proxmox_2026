@@ -238,12 +238,14 @@ Se crean a nivel de **nodo del clúster** → configuran el sistema operativo de
 
 <div class="cols-2" style="margin-top:0.8rem">
 <div class="card card-green">
+
 **Acceso a la configuración**
 - Panel izquierdo → seleccionar nodo → **Red**
 - Vista actual de interfaces y bridges
 </div>
 
 <div class="card card-yellow">
+
 **Información disponible**
 - Estado de cada interfaz
 - Configuración de IP (estática o DHCP)
@@ -260,6 +262,7 @@ Se crean a nivel de **nodo del clúster** → configuran el sistema operativo de
 
 <div class="cols-2" style="margin-top:0.8rem">
 <div class="card card-blue">
+
 **Pasos**
 1. Panel de Red → **Crear Bridge**
 2. Asignar nombre (ej: `vmbr1`)
@@ -272,7 +275,7 @@ Se crean a nivel de **nodo del clúster** → configuran el sistema operativo de
 **Cuidado**
 - El bridge principal (`vmbr0`) conecta el host a la red
 - No eliminar ni modificar el bridge activo
-- Hacer cambios con **acceso local** disponible
+- Si haces cambios debes tener el **acceso por otra interface**
 </div>
 </div>
 
@@ -311,9 +314,8 @@ Una **zona** define la tecnología de red subyacente. Cada VNet pertenece a una 
 |---|---|
 | `Simple` | Bridge local por nodo. Sin conectividad entre nodos. |
 | `VLAN` | Segmentación por VLAN tags sobre un bridge físico existente |
-| `QinQ` | Doble etiquetado VLAN (802.1ad) |
 | `VXLAN` | Tunneling L2 sobre L3 → conecta nodos en distintas subredes |
-| `EVPN` | Enrutamiento distribuido con BGP. Requiere `frr`. |
+| Otros |  |
 
 <div class="alerta alerta-warning">⚠️ La zona <strong>Simple</strong> no conecta VMs entre nodos distintos. Para eso se necesita VXLAN o EVPN.</div>
 
