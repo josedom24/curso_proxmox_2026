@@ -370,6 +370,32 @@ Una **zona** define la tecnología de red subyacente. Cada VNet pertenece a una 
 
 ---
 
+## SDN y conectividad física
+El SDN **no elimina** los Linux Bridges, los gestiona por debajo.
+
+<div class="cols-2" style="margin-top:0.8rem">
+<div class="card card-blue">
+
+**Qué hace el SDN**
+- Al crear una VNet, Proxmox genera un Linux Bridge automáticamente
+- Organiza y automatiza la gestión de redes virtuales
+- Pero **no puede inventarse** conectividad física inexistente
+
+</div>
+<div class="card card-purple">
+
+**Qué sigue siendo necesario**
+- `vmbr0` conectado a la interfaz física sigue siendo la puerta de salida
+- Sin un bridge con interfaz física real no hay acceso a internet
+- El SDN no sustituye esa pieza, la complementa
+
+</div>
+</div>
+
+<div class="alerta alerta-warning">⚠️ Para que las VMs de una VNet tengan salida a internet es necesario <strong>NAT desde <code>vmbr0</code></strong> o una <strong>segunda interfaz</strong> conectada a él.</div>
+
+---
+
 <!-- _class: capitulo -->
 <!-- _paginate: false -->
 
