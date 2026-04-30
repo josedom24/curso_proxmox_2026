@@ -167,6 +167,10 @@ Las operaciones que podemos hacer sobre los discos:
 
 ## Gestión de discos en los contenedores
 
+- Para ello escogemos el contenedor y elegimos la opción **Recursos** y añadimos un **Punto de Montaje**.
+- A continuación, elegimos la fuente de almacenamiento donde vamos a crear el volumen, su tamaño y el directorio donde se va a montar en el contenedor.
+- Y comprobamos que se ha montado el volumen en el directorio indicado.
+
 ---
 
 <!-- _class: capitulo -->
