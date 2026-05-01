@@ -187,6 +187,39 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 
 ---
 
+## Un poco de historia
+
+**Cronología de Proxmox VE y sus hitos principales**
+
+### 2008 — Nace Proxmox VE (v1.0)
+- Primeras versiones basadas en OpenVZ + KVM
+- Interfaz web experimental
+- Pionero en la combinación de hipervisor y contenedores
+
+### 2015 — Cambio clave: v4.0 (OpenVZ → LXC)
+- Abandono de OpenVZ (fin de soporte comunitario)
+- Adopción de LXC como solución de contenedores
+- Consolidación de KVM como hipervisor principal
+
+### 2016–2018 — Madurez empresarial (v5.x)
+- Alta disponibilidad (HA) nativa
+- Almacenamiento Ceph integrado
+- Clustering robusto y escalable
+- Se convierte en solución seria para data centers
+
+### 2019–2022 — Expansión: de nicho a referencia (v6.x → v7.x)
+- Reconocimiento como alternativa viable a VMware
+- Adopción en el sector empresarial
+- Mejoras significativas en red y almacenamiento
+
+### 2023–hoy — Plataforma consolidada (v8.x → v9.x)
+- Cloud-init integrado para despliegues automatizados
+- SDN (Software-Defined Networking) nativo
+- Soporte empresarial profesional
+- Ecosystem completo: Proxmox Backup Server, Proxmox Mail Gateway, etc.
+
+---
+
 ## Las dos soluciones de Proxmox VE
 
 <div class="cols-2" style="margin-top:1rem">
