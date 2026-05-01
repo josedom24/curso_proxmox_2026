@@ -189,20 +189,13 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 
 ## Un poco de historia
 
-### 2008 — v1.0
-Nace Proxmox con OpenVZ + KVM
-
-### 2015 — v4.0
-Cambio: OpenVZ → LXC + consolidación KVM
-
-### 2016–2018 — v5.x
-Alta disponibilidad y clustering empresarial
-
-### 2019–2022 — v6.x → v7.x
-Alternativa viable a VMware, adopción empresarial
-
-### 2023–hoy — v8.x → v9.x
-Cloud-init, SDN nativo, soporte profesional
+| Versión | Hito |
+|:--------|:-----|
+| **v1.0** (2008) | Nace Proxmox con OpenVZ + KVM |
+| **v4.0** (2015) | OpenVZ → LXC + consolidación KVM |
+| **v5.x** (2016–2018) | Alta disponibilidad y clustering empresarial |
+| **v6.x → v7.x** (2019–2022) | Alternativa a VMware, adopción empresarial |
+| **v8.x → v9.x** (2023–hoy) | Cloud-init, SDN nativo, soporte profesional |
 
 ---
 
