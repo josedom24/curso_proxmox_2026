@@ -156,9 +156,9 @@ Proxmox permite gestionar varios tipos de almacenamiento:
 Las operaciones que podemos hacer sobre los discos:
 
 - **Despegar**: Nos permite desconectar el disco de la máquina. Aparece como **disco no usado**.
-* Un disco no usado lo podemos borrar (**Eliminar**), editar (**Editar**) o volver añadir (**Añadir**).
-* Podemos aumentar el tamaño de un disco con la opción **Disk Action -> Resize**.
-* Recuerda que el aumento de tamaño del disco es independiente del aumento del sistema de ficheros.
+- Un disco no usado lo podemos borrar (**Eliminar**), editar (**Editar**) o volver añadir (**Añadir**).
+- Podemos aumentar el tamaño de un disco con la opción **Disk Action -> Resize**.
+- Recuerda que el aumento de tamaño del disco es independiente del aumento del sistema de ficheros.
 
 </div>
 </div>
@@ -622,29 +622,6 @@ Un **backup** es una copia de seguridad independiente, almacenada en un lugar se
 
 ---
 
-## Planificación de backups
-
-<div class="cols-2" style="margin-top:0.8rem">
-<div class="card card-purple">
-
-**Backup remoto**
-- Enviar backups a un servidor externo (NFS, iSCSI)
-- Protección contra fallos del almacenamiento local
-- Proxmox Backup Server para automatización
-
-</div>
-<div class="card card-yellow">
-
-**Estrategia recomendada**
-- Backups regulares (diarios o semanales)
-- Múltiples copias en diferentes ubicaciones
-- Probar restauración periódicamente
-
-</div>
-</div>
-
----
-
 <!-- _class: capitulo -->
 <!-- _paginate: false -->
 
@@ -654,8 +631,8 @@ Un **backup** es una copia de seguridad independiente, almacenada en un lugar se
 
 ## Gestión avanzada de máquinas virtuales
 
-
 ---
+
 
 ## Recursos
 
