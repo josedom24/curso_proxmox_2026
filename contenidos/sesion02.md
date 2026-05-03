@@ -384,6 +384,8 @@ Imagen de SO preconfigurada que sirve de base para el contenedor. Se descarga de
   - [Práctica 2: Instalación de una máquina Windows en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica2.pdf)
   - [Práctica 3: Trabajo con claves SSH](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica3.pdf)
   - [Práctica 6: Instalación de contenedores en Proxmox](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/practica6.pdf)
+- [Trabajando con claves ssh](https://www.josedomingo.org/pledin/2023/01/claves-ssh/)
+- [Escritorio remoto con Debian GNOME](https://www.josedomingo.org/pledin/2026/05/escritorio-remoto-con-debian-gnome/)
 
 ---
 
