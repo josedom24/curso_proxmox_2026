@@ -813,6 +813,8 @@ El profesor tiene acceso directo a las máquinas de cada alumno en cualquier mom
   - Capítulo 2: Instalación de Proxmox VE
 - Prácticas con alumnos:
   - [Proxmox VE: Introducción a la virtualización](https://raw.githubusercontent.com/josedom24/presentaciones/main/hlcgm/intro_virt_proxmox.pdf)
+- [Trabajando con claves ssh](https://www.josedomingo.org/pledin/2023/01/claves-ssh/)
+- [Escritorio remoto con Debian GNOME](https://www.josedomingo.org/pledin/2026/05/escritorio-remoto-con-debian-gnome/)
 
 ---
 
