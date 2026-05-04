@@ -527,48 +527,6 @@ La API está **organizada jerárquicamente**:
 
 ---
 
-## Autenticación en la API
-
-<div class="cols-2" style="margin-top:1.5rem">
-
-<div class="card card-green">
-
-### Tickets de sesión
-
-Obtén un ticket con usuario y contraseña.
-
-```bash
-curl -k -d 'username=root@pam' \
-  -d 'password=...' \
-  https://proxmox.local:8006/api2/json/access/ticket
-```
-
-Úsalo en cabeceras `Cookie` y `CSRFPreventionToken`.
-
-</div>
-
-<div class="card card-purple">
-
-### API Tokens (recomendado)
-
-Genera un **token persistente** desde *Datacenter → Permissions → API Tokens*.
-
-```bash
-Authorization: PVEAPIToken=usuario@realm!token=uuid
-```
-
-**Ventajas:**
-- No requiere mantener sesiones
-- Permisos restringidos por token
-- Fácil de revocar
-- Ideal para automatización
-
-</div>
-
-</div>
-
----
-
 ## Clientes de línea de comandos
 
 <table style="width:100%; font-size:0.75rem; margin-top:1rem">
@@ -636,62 +594,17 @@ pvesh delete /pools/Antiguo                    # Eliminar pool
 
 ---
 
-## Documentación interactiva de la API
-
-<div class="card card-yellow" style="margin-top:2rem">
-
-### API Viewer
-
-Proxmox incluye un **visualizador interactivo** muy útil accesible en:
-
-```
-https://<servidor>:8006/pve-docs/api-viewer/
-```
-
-**Permite:**
-- Navegar por el árbol completo de la API
-- Ver parámetros aceptados por cada endpoint
-- Consultar respuestas esperadas
-- Revisar privilegios requeridos
-
-**Es el primer lugar donde acudir** cuando necesitas automatizar una acción.
-
-</div>
-
----
-
-## Scripts en Python con `proxmoxer`
+## Scripts de administración
 
 <div class="card card-blue" style="margin-top:1.5rem">
 
-### Librería proxmoxer
+### Python (librería proxmoxer)
 
 `proxmoxer` es la librería más usada para Python. Abstrae la API a una sintaxis muy natural.
 
-```python
-from proxmoxer import ProxmoxAPI
-
-px = ProxmoxAPI('proxmox.iesgn.local', 
-                user='josedom@iesgn',
-                token_name='auto', 
-                token_value='xxxx-xxxx-xxxx',
-                verify_ssl=False)
-
-# Listar VMs en el nodo
-for vm in px.nodes('proxmox1').qemu.get():
-    print(f"{vm['vmid']}: {vm['name']}")
-
-# Crear una copia de seguridad
-px.nodes('proxmox1').qemu(vm_id).backup.post()
-```
-
-📦 **Repositorio de scripts**: [Ejemplos avanzados de administración con proxmoxer](https://github.com/josedom24/scripts-proxmox-python)
+- **Repositorio de scripts**: [Ejemplos avanzados de administración con proxmoxer](https://github.com/iesgn/proxmox_api)
 
 </div>
-
----
-
-## Scripts en Bash
 
 <div class="card card-green" style="margin-top:1.5rem">
 
@@ -699,18 +612,7 @@ px.nodes('proxmox1').qemu(vm_id).backup.post()
 
 Bash es ideal para **scripts rápidos y ligeros** usando `curl` o `pvesh` directamente:
 
-```bash
-TOKEN="PVEAPIToken=josedom@iesgn!auto=xxxxxxxx-xxxx-xxxx-xxxx"
-
-# Obtener información de una VM
-curl -k -H "Authorization: $TOKEN" \
-  https://proxmox.local:8006/api2/json/nodes/proxmox1/qemu/321
-
-# O más simple con pvesh
-pvesh get /nodes/proxmox1/qemu/321 --output-format json | jq '.data'
-```
-
-📂 **Repositorio de scripts**: [Colección de scripts bash para Proxmox](https://github.com/josedom24/scripts-proxmox-bash)
+- **Repositorio de scripts**: [Colección de scripts bash para Proxmox del profesor Manuel Domínguez](https://github.com/mftienda/Proxmox-Automatizar-Entorno)
 
 </div>
 
