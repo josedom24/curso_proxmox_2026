@@ -46,7 +46,7 @@ jobs:
               echo "Processing: $filename"
               # Generate HTML and PDF in the same directory
               marp "$filename" --html -o "${filename%.*}.html"
-              marp "$filename" --pdf -o "${filename%.*}.pdf"
+              marp "$filename" --pdf --allow-local-files -o "${filename%.*}.pdf"
             fi
           done
 
