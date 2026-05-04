@@ -33,19 +33,3 @@
 * DEMO 2: Configuración de máquinas virtuales usando cloud-init
 * Scripts de administración
 * Ampliación y escalabilidad del sistema
-
-### 5
-
-* Configuración específica en nuestro centro
-    * Queremos conseguir que los propios alumnos manejen su espacio en Proxmox VE.
-    * Introducción a usuarios, roles y permisos.
-    * Queremos que los usuarios creen de forma rápida nuevas MV. Para ello podrán clonar plantillas que ya tenemos predefinidas.
-* Configuración de los usuarios (servidor LDAP) y permisos necesarios.
-* Configuración de las imágenes preconfiguradas para su clonación.
-* Configuración de máquinas virtuales usando cloud-init
-* Creación de imágenes con cloud-init
-* Configuración de acceso mediante proxy inverso
-* Scripts de administración: instrucciones de línea de comandos. 
-* Próximos pasos:
-    * Almacenamiento remoto SAN/NAS
-    * Clúster de alta disponibilidad
