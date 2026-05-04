@@ -382,6 +382,116 @@ Otorgar al grupo `profesores-iesgn` acceso de auditoría o intervención sobre l
 
 ---
 
+## Concepto de cloud-init
+
+<div style="margin-top:1.5rem">
+
+<div class="card card-blue">
+
+### ¿Qué es cloud-init?
+
+**cloud-init** es un estándar de inicialización que permite **configurar máquinas virtuales automáticamente** en el primer arranque sin intervención manual.
+
+### ¿Por qué es necesario?
+
+- **Ahorra tiempo**: no hay que entrar manualmente en cada máquina
+- **Consistencia**: todas las máquinas se configuran igual
+- **Escalabilidad**: permite provisionar cientos de máquinas rápidamente
+- **Flexibilidad**: cada máquina puede tener configuración única sin crear plantillas distintas
+
+</div>
+
+</div>
+
+---
+
+## Configuración con cloud-init
+
+<div class="cols-2" style="margin-top:1rem">
+
+<div class="card card-green">
+
+### Parámetros configurables
+
+Los templates con cloud-init permiten configurar:
+
+- **Hostname** de la máquina
+- **Usuario y contraseña** de acceso
+- **Clave pública SSH** para acceso remoto
+- **Configuración de red** (IP, DNS, rutas)
+- **DNS** y otros parámetros de red
+
+</div>
+
+<div class="card card-purple">
+
+### Mecanismo de entrega
+
+cloud-init obtiene la configuración desde un:
+
+- **Dispositivo CDROM virtual** en el hardware de la máquina
+- Contiene un archivo de configuración YAML
+- Se ejecuta **solo en el primer arranque**
+- Luego se desactiva automáticamente
+
+</div>
+
+</div>
+
+---
+
+## Templates con cloud-init en nuestro centro
+
+<div class="card card-yellow" style="margin-top:1.5rem">
+
+### Máquinas virtuales base
+
+Los **templates del pool "Imágenes"** son máquinas virtuales con **cloud-init ya instalado**, listos para ser clonados.
+
+### Ventajas de nuestro enfoque
+
+- Los usuarios **clonan una plantilla** existente
+- La máquina nueva se **configura automáticamente** en el primer arranque
+- Cada usuario puede personalizar:
+  - Nombre de máquina
+  - Credenciales de acceso
+  - Configuración de red
+  - Claves SSH para acceso remoto
+
+**Resultado**: creación rápida, consistente y personalizada de máquinas virtuales
+
+</div>
+
+---
+
+## Soporte para otros sistemas operativos
+
+<div class="cols-2" style="margin-top:1rem">
+
+<div class="card card-blue">
+
+### Linux (cloud-init)
+
+- Todas las distribuciones modernas incluyen cloud-init
+- Compatible con Debian, Ubuntu, CentOS, etc.
+- Totalmente automatizado
+
+</div>
+
+<div class="card card-orange">
+
+### Windows (cloudbase-init o Sysprep)
+
+- **cloudbase-init**: equivalente a cloud-init para Windows
+- **Sysprep**: herramienta de Microsoft para preparar imágenes
+- Requiere configuración adicional en los templates
+
+</div>
+
+</div>
+
+---
+
 <!-- _class: capitulo -->
 <!-- _paginate: false -->
 
