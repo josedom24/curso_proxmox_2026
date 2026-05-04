@@ -332,6 +332,32 @@ Facilita la **asignación masiva de permisos**.
 
 ## Posibles mejoras
 
+<div class="cols-2" style="margin-top:1.5rem">
+
+<div class="card card-blue">
+
+### 1. Rol `iesgn-profesor`
+
+Crear un rol específico para profesores que incluya `Pool.Allocate`, permitiendo:
+- Crear plantillas en su proyecto personal (sin exposición al alumnado)
+- Reasignarlas a `/pool/Imagenes` cuando estén listas
+- Actualmente el profesor puede hacer plantillas directamente en el `/pool/Imagenes`
+
+</div>
+
+<div class="card card-green">
+
+### 2. Acceso supervisado a pools del alumnado
+
+Otorgar al grupo `profesores-iesgn` acceso de auditoría o intervención sobre los pools del alumnado:
+- Supervisar y evaluar el trabajo en curso
+- Diagnosticar incidencias técnicas
+- Intervenir en situaciones bloqueantes sin credenciales admin
+
+</div>
+
+</div>
+
 ---
 
 <!-- _class: capitulo -->
