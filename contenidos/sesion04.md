@@ -503,6 +503,265 @@ Los **templates del pool "Imágenes"** son máquinas virtuales con **cloud-init 
 
 ---
 
+## La API de Proxmox VE
+
+<div class="card card-blue" style="margin-top:1.5rem">
+
+### Arquitectura general
+
+Proxmox expone **toda su funcionalidad** a través de una **API REST** en el puerto **8006** (HTTPS).
+
+**URL base:**
+```
+https://<servidor>:8006/api2/json/<ruta>
+```
+
+La API está **organizada jerárquicamente**:
+- `/nodes/<nodo>` — operaciones sobre un nodo
+- `/nodes/<nodo>/qemu/<vmid>` — gestión de VMs KVM
+- `/nodes/<nodo>/lxc/<vmid>` — gestión de contenedores LXC
+- `/cluster/...` — operaciones a nivel de clúster
+- `/access/...` — autenticación y permisos
+
+</div>
+
+---
+
+## Autenticación en la API
+
+<div class="cols-2" style="margin-top:1.5rem">
+
+<div class="card card-green">
+
+### Tickets de sesión
+
+Obtén un ticket con usuario y contraseña.
+
+```bash
+curl -k -d 'username=root@pam' \
+  -d 'password=...' \
+  https://proxmox.local:8006/api2/json/access/ticket
+```
+
+Úsalo en cabeceras `Cookie` y `CSRFPreventionToken`.
+
+</div>
+
+<div class="card card-purple">
+
+### API Tokens (recomendado)
+
+Genera un **token persistente** desde *Datacenter → Permissions → API Tokens*.
+
+```bash
+Authorization: PVEAPIToken=usuario@realm!token=uuid
+```
+
+**Ventajas:**
+- No requiere mantener sesiones
+- Permisos restringidos por token
+- Fácil de revocar
+- Ideal para automatización
+
+</div>
+
+</div>
+
+---
+
+## Clientes de línea de comandos
+
+<table style="width:100%; font-size:0.75rem; margin-top:1rem">
+<thead>
+  <tr style="background:#f0f0f0">
+    <th style="width:20%; text-align:left; padding:0.5rem">Cliente</th>
+    <th style="width:55%; text-align:left; padding:0.5rem">Descripción y uso</th>
+    <th style="width:25%; text-align:center; padding:0.5rem">Acceso</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd"><code>pveum</code></td>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd">Gestión de usuarios, grupos, roles, ACLs y tokens</td>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd; text-align:center">Local (nodo)</td>
+  </tr>
+  <tr>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd"><code>qm</code></td>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd">Gestión de máquinas virtuales KVM (crear, clonar, snapshots, templates)</td>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd; text-align:center">Local (nodo)</td>
+  </tr>
+  <tr>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd"><code>pct</code></td>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd">Gestión de contenedores LXC (crear, clonar, snapshots, templates)</td>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd; text-align:center">Local (nodo)</td>
+  </tr>
+  <tr>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd"><code>pvesm</code></td>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd">Gestión de almacenamientos y volúmenes</td>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd; text-align:center">Local (nodo)</td>
+  </tr>
+  <tr>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd"><code>pvesh</code></td>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd"><strong>Cliente universal</strong> — acceso a cualquier endpoint de la API sin construir HTTP manualmente</td>
+    <td style="padding:0.4rem; border-bottom:1px solid #ddd; text-align:center">Local (nodo)</td>
+  </tr>
+  <tr>
+    <td style="padding:0.4rem"><code>pveclient</code></td>
+    <td style="padding:0.4rem">Cliente remoto basado en red — administración desde fuera del clúster</td>
+    <td style="padding:0.4rem; text-align:center">Remoto (red)</td>
+  </tr>
+</tbody>
+</table>
+
+---
+
+## Ejemplos con `pvesh` — Cliente universal
+
+<div style="margin-top:1rem">
+
+```bash
+pvesh get /nodes                               # Listar nodos
+pvesh get /pools/Imagenes                      # Ver miembros de un pool
+pvesh get /access/users --output-format json   # Listar usuarios en JSON
+pvesh create /nodes/proxmox1/qemu --vmid 999 \
+  --name nueva --memory 2048                   # Crear VM
+
+pvesh set /nodes/proxmox1/qemu/321/config \
+  --description "Plantilla Debian 12"          # Modificar configuración
+
+pvesh delete /pools/Antiguo                    # Eliminar pool
+```
+
+</div>
+
+---
+
+## Documentación interactiva de la API
+
+<div class="card card-yellow" style="margin-top:2rem">
+
+### API Viewer
+
+Proxmox incluye un **visualizador interactivo** muy útil accesible en:
+
+```
+https://<servidor>:8006/pve-docs/api-viewer/
+```
+
+**Permite:**
+- Navegar por el árbol completo de la API
+- Ver parámetros aceptados por cada endpoint
+- Consultar respuestas esperadas
+- Revisar privilegios requeridos
+
+**Es el primer lugar donde acudir** cuando necesitas automatizar una acción.
+
+</div>
+
+---
+
+## Scripts en Python con `proxmoxer`
+
+<div class="card card-blue" style="margin-top:1.5rem">
+
+### Librería proxmoxer
+
+`proxmoxer` es la librería más usada para Python. Abstrae la API a una sintaxis muy natural.
+
+```python
+from proxmoxer import ProxmoxAPI
+
+px = ProxmoxAPI('proxmox.iesgn.local', 
+                user='josedom@iesgn',
+                token_name='auto', 
+                token_value='xxxx-xxxx-xxxx',
+                verify_ssl=False)
+
+# Listar VMs en el nodo
+for vm in px.nodes('proxmox1').qemu.get():
+    print(f"{vm['vmid']}: {vm['name']}")
+
+# Crear una copia de seguridad
+px.nodes('proxmox1').qemu(vm_id).backup.post()
+```
+
+📦 **Repositorio de scripts**: [Ejemplos avanzados de administración con proxmoxer](https://github.com/josedom24/scripts-proxmox-python)
+
+</div>
+
+---
+
+## Scripts en Bash
+
+<div class="card card-green" style="margin-top:1.5rem">
+
+### Automatización con shell scripts
+
+Bash es ideal para **scripts rápidos y ligeros** usando `curl` o `pvesh` directamente:
+
+```bash
+TOKEN="PVEAPIToken=josedom@iesgn!auto=xxxxxxxx-xxxx-xxxx-xxxx"
+
+# Obtener información de una VM
+curl -k -H "Authorization: $TOKEN" \
+  https://proxmox.local:8006/api2/json/nodes/proxmox1/qemu/321
+
+# O más simple con pvesh
+pvesh get /nodes/proxmox1/qemu/321 --output-format json | jq '.data'
+```
+
+📂 **Repositorio de scripts**: [Colección de scripts bash para Proxmox](https://github.com/josedom24/scripts-proxmox-bash)
+
+</div>
+
+---
+
+## Otros métodos de automatización
+
+<div class="cols-2" style="margin-top:1.5rem">
+
+<div class="card card-purple">
+
+### Terraform
+
+Infraestructura como código (IaC) para definir máquinas virtuales y recursos de forma declarativa y reproducible.
+
+Provider oficial: `bpg/proxmox`
+
+</div>
+
+<div class="card card-orange">
+
+### Ansible
+
+Orquestación y configuración idempotente mediante la colección `community.general.proxmox`.
+
+Facilita tareas repetitivas y gestión de máquinas a escala.
+
+</div>
+
+</div>
+
+---
+
+## Aplicación práctica en vuestro centro
+
+<div class="card card-yellow" style="margin-top:1.5rem">
+
+### Casos de uso principales
+
+1. **Aprovisionamiento de alumnos**: Scripts con `pveum` + `pvesh` para crear usuarios, grupos, pools y ACLs a principio de curso desde un CSV.
+
+2. **Automatización de plantillas**: Scripts que construyen plantillas de forma reproducible, garantizando que todas se preparan igual y pueden regenerarse ante actualizaciones.
+
+3. **Limpieza periódica**: Detectar y eliminar VMs antiguas, snapshots olvidados, alumnos que ya no están matriculados.
+
+4. **Monitorización de consumo**: Consultar la API periódicamente para avisar cuando un pool sobrepase ciertos umbrales de recursos.
+
+</div>
+
+---
+
 <!-- _class: capitulo -->
 <!-- _paginate: false -->
 
