@@ -474,7 +474,7 @@ Los **templates del pool "Imágenes"** son máquinas virtuales con **cloud-init 
 
 - Todas las distribuciones modernas incluyen cloud-init
 - Compatible con Debian, Ubuntu, CentOS, etc.
-- Totalmente automatizado
+- Recurso: [Configuración automática de una máquina virtual de Proxmox con cloud-init](https://www.josedomingo.org/pledin/2022/10/proxmox-cloud-init/)
 
 </div>
 
@@ -483,8 +483,8 @@ Los **templates del pool "Imágenes"** son máquinas virtuales con **cloud-init 
 ### Windows (cloudbase-init o Sysprep)
 
 - **cloudbase-init**: equivalente a cloud-init para Windows
-- **Sysprep**: herramienta de Microsoft para preparar imágenes
-- Requiere configuración adicional en los templates
+- **Sysprep**: herramienta de Microsoft para generalizar la instalación. Cuando clonamos a partir del tamplate comienza la última fase de configuración (**hay que asigna nueva contraseña**).
+
 
 </div>
 
