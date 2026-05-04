@@ -511,10 +511,7 @@ Los **templates del pool "Imágenes"** son máquinas virtuales con **cloud-init 
 
 Proxmox expone **toda su funcionalidad** a través de una **API REST** en el puerto **8006** (HTTPS).
 
-**URL base:**
-```
-https://<servidor>:8006/api2/json/<ruta>
-```
+**URL base:** `https://<servidor>:8006/api2/json/<ruta>`
 
 La API está **organizada jerárquicamente**:
 - `/nodes/<nodo>` — operaciones sobre un nodo
