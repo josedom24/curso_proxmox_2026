@@ -29,6 +29,13 @@
 ### Sesión 4: Configuración especifica de Proxmox VE en el IES Gonzalo Nazareno
 
 * Configuración específica en nuestro centro
+* DEMO 1: Configuración de máquinas virtuales usando cloud-init
+* Scripts de administración
+* Ampliación y escalabilidad del sistema
+
+### 5
+
+* Configuración específica en nuestro centro
     * Queremos conseguir que los propios alumnos manejen su espacio en Proxmox VE.
     * Introducción a usuarios, roles y permisos.
     * Queremos que los usuarios creen de forma rápida nuevas MV. Para ello podrán clonar plantillas que ya tenemos predefinidas.
