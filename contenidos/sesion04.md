@@ -330,6 +330,10 @@ Facilita la **asignación masiva de permisos**.
 
 ---
 
+## Posibles mejoras
+
+---
+
 <!-- _class: capitulo -->
 <!-- _paginate: false -->
 
