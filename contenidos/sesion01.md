@@ -95,7 +95,7 @@ header: 'Proxmox VE · Sesión 1 — Introducción a la virtualización con Prox
 - El kernel Linux actúa como hipervisor tipo 1: **no hay SO anfitrión de propósito general** por debajo
 - Requiere extensiones de virtualización del procesador: `Intel VT-x` o `AMD-V`
 - Cada máquina virtual es un **proceso normal** de Linux, gestionado y aislado por el kernel
-- Se apoya en **QEMU** para emular los dispositivos de la VM (disco, red, USB…)
+- Se apoya en **QEMU** para emular los dispositivos de la VM (pantalla, ratón, USB…)
 - Con **dispositivos paravirtualizados** (`virtio`), la VM usa una interfaz optimizada que evita la emulación completa → **mayor rendimiento** (disco, red,...)
 
 ---
