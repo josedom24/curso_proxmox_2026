@@ -164,9 +164,10 @@ La **virtualización ligera** no emula hardware: aísla procesos dentro del mism
 - Hipervisor **KVM** para máquinas virtuales completas
 - **LXC** para contenedores Linux ligeros
 - **Almacenamiento** (local, Ceph, NFS, iSCSI…)
+- **Plantillas**, **Snapshots**, **Backups**
 - **Redes** (bridges, VLANs, SDN)
 - **Clúster** y alta disponibilidad
-- **Backups** integrados con Proxmox Backup Server
+
 
 </div>
 
