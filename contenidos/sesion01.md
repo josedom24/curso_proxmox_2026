@@ -55,17 +55,16 @@ header: 'Proxmox VE · Sesión 1 — Introducción a la virtualización con Prox
 
 ## Tipos de virtualización — Máquinas Virtuales
 
-El hipervisor emula completamente el hardware físico. Los SO invitados se ejecutan **sin modificaciones**, usando extensiones del procesador (`Intel VT-x` / `AMD-V`) para acceso directo al hardware cuando es posible.
-
 <div class="cols-2" style="margin-top:0.8rem">
 
 <div class="card card-blue">
 
 ### Hipervisor tipo 1 *(bare-metal)*
 
-- Se ejecuta **directamente sobre el hardware físico**, sin SO subyacente
-- Necesarias las extensiones de virtualización en la CPU
-- Rendimiento cercano al de una máquina física real
+- El hipervisor **corre directamente sobre el hardware**, sin SO anfitrión de propósito general
+- Las VMs acceden al hardware **a través del hipervisor** — no hay SO intermedio
+- Requiere extensiones de virtualización en la CPU (`Intel VT-x` / `AMD-V`)
+- **Máximo rendimiento**: sin capas adicionales de abstracción
 
 **Ejemplos:** VMware ESXi, Microsoft Hyper-V, Xen, **KVM**
 
@@ -75,9 +74,9 @@ El hipervisor emula completamente el hardware físico. Los SO invitados se ejecu
 
 ### Hipervisor tipo 2 *(hosteado)*
 
-- Se ejecuta **sobre un SO anfitrión** que gestiona el acceso al hardware
-- Introduce una capa adicional → **menor rendimiento** que el tipo 1
-- Ideal para uso en escritorio, pruebas o desarrollo local
+- Se ejecuta **como una aplicación sobre un SO anfitrión**
+- Las VMs atraviesan **dos capas**: el hipervisor y el SO anfitrión
+- **Menor rendimiento** que el tipo 1 por la capa adicional del SO
 
 **Ejemplos:** VMware Workstation, VirtualBox, Parallels Desktop, VMware Player
 
@@ -89,15 +88,15 @@ El hipervisor emula completamente el hardware físico. Los SO invitados se ejecu
 
 ## KVM — Kernel-based Virtual Machine
 
-**KVM** es un hipervisor de tipo 1 integrado directamente en el kernel de Linux desde la versión 2.6.20 (2007).
+**KVM** es un módulo del kernel de Linux (desde la versión 2.6.20, 2007) que convierte el propio kernel en un hipervisor de tipo 1 — el kernel Linux **es** el hipervisor.
 
 ### Cómo funciona
 
-- Convierte el kernel Linux en un hipervisor tipo 1
+- El kernel Linux actúa como hipervisor tipo 1: **no hay SO anfitrión de propósito general** por debajo
 - Requiere extensiones de virtualización del procesador: `Intel VT-x` o `AMD-V`
-- Cada máquina virtual es un **proceso normal** de Linux con acceso directo al hardware
+- Cada máquina virtual es un **proceso normal** de Linux, gestionado y aislado por el kernel
 - Se apoya en **QEMU** para emular los dispositivos de la VM (disco, red, USB…)
-- Con **dispositivos paravirtualizados** (`virtio`), la VM accede directamente al hardware físico sin pasar por la emulación completa → **mayor rendimiento** (disco, red,...)
+- Con **dispositivos paravirtualizados** (`virtio`), la VM usa una interfaz optimizada que evita la emulación completa → **mayor rendimiento** (disco, red,...)
 
 ---
 
