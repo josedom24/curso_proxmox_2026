@@ -11,13 +11,13 @@
 * Infraestructura de virtualización en el IES Gonzalo Nazareno
 * DEMO 1: Acceso a nuestro Proxmox VE
 
-### Sesión 2: Uso básico de Proxmox VE
+### Sesión 2: Uso básico de Proxmox VE [[html](https://josedom24.github.io/curso_proxmox_2026/contenidos/sesion02.html)] [[pdf](https://github.com/josedom24/curso_proxmox_2026/raw/main/contenidos/sesion02.pdf)]
 
 * DEMO 1: Gestión de máquinas virtuales Linux
 * DEMO 2: Gestión de máquinas virtuales Windows
 * DEMO 3: Gestión de contenedores LXC
 
-### Sesión 3: Almacenamiento y redes en Proxmox VE
+### Sesión 3: Almacenamiento y redes en Proxmox VE [[html](https://josedom24.github.io/curso_proxmox_2026/contenidos/sesion03.html)] [[pdf](https://github.com/josedom24/curso_proxmox_2026/raw/main/contenidos/sesion03.pdf)]
 
 * Gestión de almacenamiento en Proxmox VE
 * DEMO 1: Gestión de discos en MV y en contenedores
@@ -26,7 +26,7 @@
 * Clonación, plantillas, snapshots y backup de máquinas virtuales
 * DEMO 3: Gestión de plantillas y snapshots en Proxmox VE
 
-### Sesión 4: Configuración especifica de Proxmox VE en el IES Gonzalo Nazareno
+### Sesión 4: Configuración especifica de Proxmox VE en el IES Gonzalo Nazareno [[html](https://josedom24.github.io/curso_proxmox_2026/contenidos/sesion04.html)] [[pdf](https://github.com/josedom24/curso_proxmox_2026/raw/main/contenidos/sesion04.pdf)]
 
 * Configuración específica en nuestro centro
 * DEMO 1: Clonación de MV de un usuario
