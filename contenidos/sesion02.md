@@ -393,7 +393,9 @@ Imagen de SO preconfigurada que sirve de base para el contenedor. Se descarga de
 | **`pct`** | Contenedores LXC | Administración y scripting de CTs |
 | **`pvesh`** | Toda la API REST de Proxmox | Automatización avanzada, cualquier recurso |
 
-<div class="alerta alerta-info">ℹ️ <code>qm</code> y <code>pct</code> operan sobre el nodo local. <code>pvesh</code> accede a la API REST del clúster y puede gestionar recursos de cualquier nodo.</div>
+
+- **`qm`** y **`pct`** operan sobre el nodo local. 
+- **`pvesh`** accede a la API REST del clúster y puede gestionar recursos de cualquier nodo.
 
 ---
 
@@ -486,6 +488,12 @@ pct resume <ctid>    # reanudar
 pct reboot <ctid>    # reiniciar
 ```
 
+### Acceder al shell
+
+```bash
+pct enter <ctid>             # abre shell dentro del CT
+```
+
 ### Eliminar
 
 ```bash
@@ -500,27 +508,26 @@ pct destroy <ctid> --purge   # elimina CT, discos y backups
 
 ## `pvesh` — La API REST desde el terminal
 
+<div class="alerta alerta-warning">⚠️ Sustituye <code>&lt;nodo&gt;</code> por el nombre real del servidor. Consúltalo con: <code>pvesh get /nodes</code></div>
+
 <div class="cols-2">
 <div>
 
 ### Listar recursos
 
 ```bash
-# Listar MVs del nodo
-pvesh get /nodes/proxmox/qemu
-
-# Listar contenedores del nodo
-pvesh get /nodes/proxmox/lxc
+pvesh get /nodes/<nodo>/qemu   # listar MVs
+pvesh get /nodes/<nodo>/lxc    # listar contenedores
 
 # Estado de una MV
-pvesh get /nodes/proxmox/qemu/200/status/current
+pvesh get /nodes/<nodo>/qemu/200/status/current
 ```
 
 ### Eliminar
 
 ```bash
-pvesh delete /nodes/proxmox/qemu/200   # MV
-pvesh delete /nodes/proxmox/lxc/300    # contenedor
+pvesh delete /nodes/<nodo>/qemu/200   # MV
+pvesh delete /nodes/<nodo>/lxc/300    # contenedor
 ```
 
 </div>
@@ -529,21 +536,21 @@ pvesh delete /nodes/proxmox/lxc/300    # contenedor
 ### Ciclo de vida — MVs
 
 ```bash
-pvesh create /nodes/proxmox/qemu/200/status/start
-pvesh create /nodes/proxmox/qemu/200/status/shutdown
-pvesh create /nodes/proxmox/qemu/200/status/stop
-pvesh create /nodes/proxmox/qemu/200/status/suspend
-pvesh create /nodes/proxmox/qemu/200/status/resume
+pvesh create /nodes/<nodo>/qemu/200/status/start
+pvesh create /nodes/<nodo>/qemu/200/status/shutdown
+pvesh create /nodes/<nodo>/qemu/200/status/stop
+pvesh create /nodes/<nodo>/qemu/200/status/suspend
+pvesh create /nodes/<nodo>/qemu/200/status/resume
 ```
 
 ### Ciclo de vida — Contenedores
 
 ```bash
-pvesh create /nodes/proxmox/lxc/300/status/start
-pvesh create /nodes/proxmox/lxc/300/status/shutdown
-pvesh create /nodes/proxmox/lxc/300/status/stop
-pvesh create /nodes/proxmox/lxc/300/status/suspend
-pvesh create /nodes/proxmox/lxc/300/status/resume
+pvesh create /nodes/<nodo>/lxc/300/status/start
+pvesh create /nodes/<nodo>/lxc/300/status/shutdown
+pvesh create /nodes/<nodo>/lxc/300/status/stop
+pvesh create /nodes/<nodo>/lxc/300/status/suspend
+pvesh create /nodes/<nodo>/lxc/300/status/resume
 ```
 
 </div>
