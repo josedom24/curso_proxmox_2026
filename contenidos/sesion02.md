@@ -508,7 +508,7 @@ pct destroy <ctid> --purge   # elimina CT, discos y backups
 
 ## `pvesh` — La API REST desde el terminal
 
-<div class="alerta alerta-warning">⚠️ Sustituye <code>&lt;nodo&gt;</code> por el nombre real del servidor. Consúltalo con: <code>pvesh get /nodes</code></div>
+<div class="alerta alerta-warning">⚠️ El nombre del nodo es <code>proxmox1</code>. Puedes verificarlo con: <code>pvesh get /nodes</code></div>
 
 <div class="cols-2">
 <div>
@@ -516,18 +516,18 @@ pct destroy <ctid> --purge   # elimina CT, discos y backups
 ### Listar recursos
 
 ```bash
-pvesh get /nodes/<nodo>/qemu   # listar MVs
-pvesh get /nodes/<nodo>/lxc    # listar contenedores
+pvesh get /nodes/proxmox1/qemu   # listar MVs
+pvesh get /nodes/proxmox1/lxc    # listar contenedores
 
 # Estado de una MV
-pvesh get /nodes/<nodo>/qemu/200/status/current
+pvesh get /nodes/proxmox1/qemu/200/status/current
 ```
 
 ### Eliminar
 
 ```bash
-pvesh delete /nodes/<nodo>/qemu/200   # MV
-pvesh delete /nodes/<nodo>/lxc/300    # contenedor
+pvesh delete /nodes/proxmox1/qemu/200   # MV
+pvesh delete /nodes/proxmox1/lxc/300    # contenedor
 ```
 
 </div>
@@ -536,21 +536,21 @@ pvesh delete /nodes/<nodo>/lxc/300    # contenedor
 ### Ciclo de vida — MVs
 
 ```bash
-pvesh create /nodes/<nodo>/qemu/200/status/start
-pvesh create /nodes/<nodo>/qemu/200/status/shutdown
-pvesh create /nodes/<nodo>/qemu/200/status/stop
-pvesh create /nodes/<nodo>/qemu/200/status/suspend
-pvesh create /nodes/<nodo>/qemu/200/status/resume
+pvesh create /nodes/proxmox1/qemu/200/status/start
+pvesh create /nodes/proxmox1/qemu/200/status/shutdown
+pvesh create /nodes/proxmox1/qemu/200/status/stop
+pvesh create /nodes/proxmox1/qemu/200/status/suspend
+pvesh create /nodes/proxmox1/qemu/200/status/resume
 ```
 
 ### Ciclo de vida — Contenedores
 
 ```bash
-pvesh create /nodes/<nodo>/lxc/300/status/start
-pvesh create /nodes/<nodo>/lxc/300/status/shutdown
-pvesh create /nodes/<nodo>/lxc/300/status/stop
-pvesh create /nodes/<nodo>/lxc/300/status/suspend
-pvesh create /nodes/<nodo>/lxc/300/status/resume
+pvesh create /nodes/proxmox1/lxc/300/status/start
+pvesh create /nodes/proxmox1/lxc/300/status/shutdown
+pvesh create /nodes/proxmox1/lxc/300/status/stop
+pvesh create /nodes/proxmox1/lxc/300/status/suspend
+pvesh create /nodes/proxmox1/lxc/300/status/resume
 ```
 
 </div>
