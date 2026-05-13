@@ -374,6 +374,222 @@ Imagen de SO preconfigurada que sirve de base para el contenedor. Se descarga de
 
 ---
 
+<!-- _class: capitulo -->
+<!-- _paginate: false -->
+
+<p class="numero">04</p>
+
+# Gestión desde la línea de comandos
+
+## qm, pct y pvesh
+
+---
+
+## Tres herramientas CLI
+
+| Herramienta | Qué gestiona | Cuándo usarla |
+|:------------|:-------------|:--------------|
+| **`qm`** | Máquinas virtuales (KVM) | Administración y scripting de MVs |
+| **`pct`** | Contenedores LXC | Administración y scripting de CTs |
+| **`pvesh`** | Toda la API REST de Proxmox | Automatización avanzada, cualquier recurso |
+
+<div class="alerta alerta-info">ℹ️ <code>qm</code> y <code>pct</code> son comandos especializados. <code>pvesh</code> expone la API completa — más potente pero más verboso.</div>
+
+---
+
+## `qm` — Gestión de MVs desde el terminal
+
+<div class="cols-2">
+<div>
+
+### Listar y consultar
+
+```bash
+qm list              # todas las MVs
+qm status <vmid>     # estado de una MV
+qm config <vmid>     # configuración completa
+```
+
+### Crear
+
+```bash
+qm create 200 \
+  --name debian-test \
+  --memory 2048 --cores 2 \
+  --net0 virtio,bridge=vmbr0 \
+  --scsi0 local-lvm:20
+```
+
+</div>
+<div>
+
+### Ciclo de vida
+
+```bash
+qm start <vmid>      # iniciar
+qm shutdown <vmid>   # apagado ordenado
+qm stop <vmid>       # parar (forzado)
+qm suspend <vmid>    # pausar
+qm resume <vmid>     # reanudar
+qm reboot <vmid>     # reiniciar
+```
+
+### Eliminar
+
+```bash
+qm stop <vmid>               # la MV debe estar parada
+qm destroy <vmid> --purge    # elimina MV, discos y backups
+```
+
+</div>
+</div>
+
+---
+
+## `pct` — Gestión de contenedores LXC desde el terminal
+
+<div class="cols-2">
+<div>
+
+### Listar y consultar
+
+```bash
+pct list              # todos los contenedores
+pct status <ctid>     # estado de un CT
+pct config <ctid>     # configuración completa
+```
+
+### Crear
+
+```bash
+pct create 300 \
+  local:vztmpl/debian-12-standard_12.7-1_amd64.tar.zst \
+  --hostname ct-debian \
+  --memory 512 --cores 1 \
+  --net0 name=eth0,bridge=vmbr0,ip=dhcp \
+  --rootfs local-lvm:8 \
+  --password secreto
+```
+
+</div>
+<div>
+
+### Ciclo de vida
+
+```bash
+pct start <ctid>     # iniciar
+pct shutdown <ctid>  # apagado ordenado
+pct stop <ctid>      # parar (forzado)
+pct suspend <ctid>   # pausar
+pct resume <ctid>    # reanudar
+pct reboot <ctid>    # reiniciar
+```
+
+### Eliminar
+
+```bash
+pct stop <ctid>              # el CT debe estar parado
+pct destroy <ctid> --purge   # elimina CT, discos y backups
+```
+
+</div>
+</div>
+
+---
+
+## `pvesh` — La API REST desde el terminal
+
+<div class="cols-2">
+<div>
+
+### Listar recursos
+
+```bash
+# Listar MVs del nodo
+pvesh get /nodes/proxmox/qemu
+
+# Listar contenedores del nodo
+pvesh get /nodes/proxmox/lxc
+
+# Estado de una MV
+pvesh get /nodes/proxmox/qemu/200/status/current
+```
+
+### Eliminar
+
+```bash
+pvesh delete /nodes/proxmox/qemu/200   # MV
+pvesh delete /nodes/proxmox/lxc/300    # contenedor
+```
+
+</div>
+<div>
+
+### Ciclo de vida — MVs
+
+```bash
+pvesh create /nodes/proxmox/qemu/200/status/start
+pvesh create /nodes/proxmox/qemu/200/status/shutdown
+pvesh create /nodes/proxmox/qemu/200/status/stop
+pvesh create /nodes/proxmox/qemu/200/status/suspend
+pvesh create /nodes/proxmox/qemu/200/status/resume
+```
+
+### Ciclo de vida — Contenedores
+
+```bash
+pvesh create /nodes/proxmox/lxc/300/status/start
+pvesh create /nodes/proxmox/lxc/300/status/shutdown
+pvesh create /nodes/proxmox/lxc/300/status/stop
+pvesh create /nodes/proxmox/lxc/300/status/suspend
+pvesh create /nodes/proxmox/lxc/300/status/resume
+```
+
+</div>
+</div>
+
+---
+
+## ¿Cuándo usar cada herramienta?
+
+<div class="cols-3" style="margin-top:1.2rem">
+
+<div class="card card-blue">
+
+### `qm`
+
+- Tareas cotidianas sobre **MVs** desde el terminal
+- Scripts de automatización con MVs
+- Equivalente CLI de la interfaz web para MVs
+
+</div>
+
+<div class="card card-green">
+
+### `pct`
+
+- Tareas cotidianas sobre **contenedores** desde el terminal
+- Scripts de automatización con CTs
+- Equivalente CLI de la interfaz web para CTs
+
+</div>
+
+<div class="card card-purple">
+
+### `pvesh`
+
+- Recursos sin comando específico en `qm`/`pct`
+- Integración con la **API REST** de Proxmox
+- Explorar la API interactivamente
+
+</div>
+
+</div>
+
+<div class="alerta alerta-info" style="margin-top:0.8rem">ℹ️ En el día a día <strong>qm y pct son suficientes</strong>. Usa <code>pvesh</code> cuando necesites algo que no cubran directamente.</div>
+
+---
+
 ## Recursos
 
 - [Curso de introducción a Proxmox VE (CEP Castilleja de la Cuesta)](https://github.com/iesgn/curso_proxmox_cep)
