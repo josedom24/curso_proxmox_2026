@@ -486,7 +486,7 @@ pct stop <ctid>      # parar (forzado)
 pct suspend <ctid>   # pausar
 pct resume <ctid>    # reanudar
 pct reboot <ctid>    # reiniciar
-pct enter <ctid>             # abre shell dentro del CT
+pct enter <ctid>     # abre shell dentro del CT
 ```
 
 ### Eliminar
