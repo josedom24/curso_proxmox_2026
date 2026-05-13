@@ -417,7 +417,8 @@ qm create 200 \
   --name debian-test \
   --memory 2048 --cores 2 \
   --net0 virtio,bridge=vmbr0 \
-  --scsi0 local-lvm:20
+  --scsi0 local-lvm:20 \
+  --cdrom local:iso/debian-13.1.0-amd64-netinst.iso
 ```
 
 </div>
