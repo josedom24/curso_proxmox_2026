@@ -393,7 +393,7 @@ Imagen de SO preconfigurada que sirve de base para el contenedor. Se descarga de
 | **`pct`** | Contenedores LXC | Administración y scripting de CTs |
 | **`pvesh`** | Toda la API REST de Proxmox | Automatización avanzada, cualquier recurso |
 
-<div class="alerta alerta-info">ℹ️ <code>qm</code> y <code>pct</code> trabajan con MVs y contenedores del <strong>nodo local</strong>. <code>pvesh</code> accede a la API REST del clúster completo — puede gestionar recursos de <strong>cualquier nodo</strong>.</div>
+<div class="alerta alerta-info">ℹ️ <code>qm</code> y <code>pct</code> operan sobre el nodo local. <code>pvesh</code> accede a la API REST del clúster y puede gestionar recursos de cualquier nodo.</div>
 
 ---
 
