@@ -486,11 +486,6 @@ pct stop <ctid>      # parar (forzado)
 pct suspend <ctid>   # pausar
 pct resume <ctid>    # reanudar
 pct reboot <ctid>    # reiniciar
-```
-
-### Acceder al shell
-
-```bash
 pct enter <ctid>             # abre shell dentro del CT
 ```
 
