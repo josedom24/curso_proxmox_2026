@@ -549,8 +549,6 @@ pvesh create /nodes/proxmox1/qemu/200/status/resume
 pvesh create /nodes/proxmox1/lxc/300/status/start
 pvesh create /nodes/proxmox1/lxc/300/status/shutdown
 pvesh create /nodes/proxmox1/lxc/300/status/stop
-pvesh create /nodes/proxmox1/lxc/300/status/suspend
-pvesh create /nodes/proxmox1/lxc/300/status/resume
 ```
 
 </div>
