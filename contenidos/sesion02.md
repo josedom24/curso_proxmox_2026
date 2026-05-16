@@ -33,6 +33,43 @@ header: 'Proxmox VE · Sesión 2 — Uso básico de Proxmox VE'
 
 ---
 
+## Almacenamiento y redes disponibles en Proxmox VE
+
+<div class="cols-2" style="margin-top:1rem">
+
+<div>
+
+### Almacenamiento
+
+**`local`** (Directory)
+- Backups
+- Imágenes ISO
+- Plantillas de CT
+
+**`local-lvm`** (LVM-Thin) (3,7 TB)
+- Discos de máquinas virtuales
+- Sistemas de ficheros de CTs
+- Crecimiento automático
+
+</div>
+
+<div>
+
+### Redes virtuales
+
+**`vmbr0`** (Linux Bridge)
+- Bridge virtual para VMs y CTs
+- DHCP automático (172.22.x.x)
+- Accesibles desde la red local
+- Por defecto: todas las VMs/CTs aquí
+- Tenemos más bridge para las prácticas 
+
+</div>
+
+</div>
+
+---
+
 ## Creación de una MV Linux en Proxmox (1)
 
 <div class="cols-2">
