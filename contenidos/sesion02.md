@@ -166,6 +166,40 @@ Secciones del **panel lateral**:
 
 ---
 
+## Monitor: la consola del hipervisor QEMU
+
+<div class="alerta alerta-warning">⚠️ <strong>Monitor NO es la terminal del SO invitado</strong> — es la interfaz de control del hipervisor sobre esa VM. Confusión típica del alumnado.</div>
+
+Proxmox lanza un proceso QEMU/KVM por cada VM. Ese proceso expone un canal de control llamado **QEMU Monitor**: hablas con el hipervisor *sobre* la VM, no con el SO que corre dentro.
+
+<div class="cols-2" style="margin-top:0.5rem">
+<div class="card card-blue">
+
+**Información del sistema emulado**
+```
+info status       → estado (running, paused…)
+info block        → discos y archivos del host
+info network      → tarjetas de red virtuales
+info cpus / info kvm / info memory-devices
+```
+
+</div>
+<div class="card card-purple">
+
+**Acciones en caliente**
+```
+sendkey ctrl-alt-delete  → útil en Windows
+system_powerdown         → botón ACPI apagado
+stop / cont              → pausar / reanudar CPU
+change                   → cambiar medio CD-ROM
+screendump /tmp/cap.ppm  → captura de pantalla
+```
+
+</div>
+</div>
+
+---
+
 ## Eliminar una máquina virtual
 
 <div class="alerta alerta-danger">🛑 La máquina debe estar <strong>parada</strong> antes de poder eliminarla.</div>
