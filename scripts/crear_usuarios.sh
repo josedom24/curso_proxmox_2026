@@ -41,7 +41,7 @@ for grupo in "${!GRUPOS[@]}"; do
         [[ -z "$usuario" || "$usuario" == \#* ]] && continue
         userid="${usuario}@${REALM}"
 
-        if pveum user list | grep -q "^${userid} "; then
+        if pveum user list | grep -q "${userid}"; then
             echo "  [YA EXISTE] $userid"
         else
             pveum user add "$userid" --password "$password" --groups "$grupo"
