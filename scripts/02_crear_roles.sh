@@ -22,7 +22,7 @@ crear_rol "usuario" \
 Permissions.Modify,Pool.Audit,SDN.Use,\
 Sys.Audit,Sys.Console,Sys.Modify,Sys.Syslog,\
 VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Console,\
-VM.Migrate,VM.Monitor,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback,\
+VM.Migrate,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback,\
 VM.Config.CDROM,VM.Config.CPU,VM.Config.Cloudinit,VM.Config.Disk,\
 VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options"
 
