@@ -22,7 +22,7 @@ vaciar_pool() {
     # Quitar VMs/CTs que pueda tener asignadas (sin borrarlas)
     local vmids
     vmids=$(pvesh get /pools/"$poolid" --output-format json 2>/dev/null \
-        | grep -o '"vmid":[0-9]*' | grep -o '[0-9]*')
+        | grep -o '"vmid":[0-9]*' | grep -o '[0-9]*' || true)
 
     if [[ -n "$vmids" ]]; then
         while IFS= read -r vmid; do
