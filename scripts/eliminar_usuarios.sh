@@ -28,7 +28,7 @@ for grupo in "${!GRUPOS[@]}"; do
         [[ -z "$usuario" || "$usuario" == \#* ]] && continue
         userid="${usuario}@${REALM}"
 
-        if pveum user list | grep -q "^${userid} "; then
+        if pveum user list | grep -q "${userid}"; then
             pveum user delete "$userid"
             echo "  [OK] Usuario eliminado: $userid"
         else
@@ -41,7 +41,7 @@ done
 
 # Eliminar grupos
 for grupo in "${!GRUPOS[@]}"; do
-    if pveum group list | grep -q "^${grupo} "; then
+    if pveum group list | grep -q "${grupo}"; then
         pveum group delete "$grupo"
         echo "  [OK] Grupo eliminado: $grupo"
     else

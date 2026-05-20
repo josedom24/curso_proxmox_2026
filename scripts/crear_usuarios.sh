@@ -16,7 +16,7 @@ declare -A GRUPOS=(
 
 # Crear grupos
 for grupo in "${!GRUPOS[@]}"; do
-    if pveum group list | grep -q "^${grupo} "; then
+    if pveum group list | grep -q "${grupo}"; then
         echo "  [YA EXISTE] Grupo: $grupo"
     else
         pveum group add "$grupo" --comment "Grupo $grupo"
