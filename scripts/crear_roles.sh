@@ -8,7 +8,7 @@ crear_rol() {
     local nombre="$1"
     local privs="$2"
 
-    if pveum role list | grep -q "^${nombre} "; then
+    if pveum role list | grep -q "${nombre}"; then
         echo "  [YA EXISTE] Rol: $nombre"
     else
         pveum role add "$nombre" --privs "$privs"

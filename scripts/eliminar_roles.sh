@@ -7,7 +7,7 @@ set -euo pipefail
 ROLES=("usuario" "red" "template-clone" "template-create")
 
 for rol in "${ROLES[@]}"; do
-    if pveum role list | grep -q "^${rol} "; then
+    if pveum role list | grep -q "${rol}"; then
         pveum role delete "$rol"
         echo "  [OK] Rol eliminado: $rol"
     else
