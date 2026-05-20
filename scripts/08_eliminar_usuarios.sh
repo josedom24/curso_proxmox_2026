@@ -1,5 +1,5 @@
 #!/bin/bash
-# Elimina los usuarios y grupos creados por crear_usuarios.sh
+# Elimina los usuarios y grupos creados por 01_crear_usuarios.sh
 # Ejecutar en el nodo Proxmox como root
 
 set -euo pipefail
@@ -28,7 +28,7 @@ for grupo in "${!GRUPOS[@]}"; do
         [[ -z "$usuario" || "$usuario" == \#* ]] && continue
         userid="${usuario}@${REALM}"
 
-        if pveum user list | grep -q "${userid}"; then
+        if pvesh get /access/users/"$userid" &>/dev/null; then
             pveum user delete "$userid"
             echo "  [OK] Usuario eliminado: $userid"
         else
@@ -41,7 +41,7 @@ done
 
 # Eliminar grupos
 for grupo in "${!GRUPOS[@]}"; do
-    if pveum group list | grep -q "${grupo}"; then
+    if pvesh get /access/groups/"$grupo" &>/dev/null; then
         pveum group delete "$grupo"
         echo "  [OK] Grupo eliminado: $grupo"
     else

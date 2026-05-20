@@ -16,7 +16,7 @@ declare -A GRUPOS=(
 
 # Crear grupos
 for grupo in "${!GRUPOS[@]}"; do
-    if pveum group list | grep -q "${grupo}"; then
+    if pvesh get /access/groups/"$grupo" &>/dev/null; then
         echo "  [YA EXISTE] Grupo: $grupo"
     else
         pveum group add "$grupo" --comment "Grupo $grupo"
@@ -41,7 +41,7 @@ for grupo in "${!GRUPOS[@]}"; do
         [[ -z "$usuario" || "$usuario" == \#* ]] && continue
         userid="${usuario}@${REALM}"
 
-        if pveum user list | grep -q "${userid}"; then
+        if pvesh get /access/users/"$userid" &>/dev/null; then
             echo "  [YA EXISTE] $userid"
         else
             pveum user add "$userid" --password "$password" --groups "$grupo"
