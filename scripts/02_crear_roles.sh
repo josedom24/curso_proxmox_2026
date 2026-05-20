@@ -24,7 +24,9 @@ Sys.Audit,Sys.Console,Sys.Modify,Sys.Syslog,\
 VM.Allocate,VM.Audit,VM.Backup,VM.Clone,VM.Console,\
 VM.Migrate,VM.PowerMgmt,VM.Snapshot,VM.Snapshot.Rollback,\
 VM.Config.CDROM,VM.Config.CPU,VM.Config.Cloudinit,VM.Config.Disk,\
-VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options"
+VM.Config.HWType,VM.Config.Memory,VM.Config.Network,VM.Config.Options,\
+VM.GuestAgent.Audit,VM.GuestAgent.FileRead,VM.GuestAgent.FileSystemMgmt,\
+VM.GuestAgent.FileWrite,VM.GuestAgent.Unrestricted"
 
 # Rol red: administración de redes SDN
 crear_rol "red" \
