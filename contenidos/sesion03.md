@@ -357,8 +357,6 @@ El SDN **no elimina** los Linux Bridges, los gestiona por debajo.
 </div>
 </div>
 
-<div class="alerta alerta-warning">⚠️ Para que las VMs de una VNet tengan salida a internet es necesarioNAT desde <code>vmbr0</code> o una segunda interfaz conectada a él.</div>
-
 ---
 
 <!-- _class: capitulo -->
