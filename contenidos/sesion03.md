@@ -42,41 +42,17 @@ Proxmox permite gestionar varios tipos de almacenamiento:
 
 ### Almacenamiento local
 
-- **local** (Directory) — almacenamiento en carpetas
-- **local-lvm** (LVM) — almacenamiento en volúmenes lógicos
-- Almacenamiento **directo** en el nodo
+- **local (isos-hdd)** (Directory) — almacenamiento en directorio. Guarda **ISOs, backups, plantillas de contenedor,...**.
+- **local-lvm (ssd-vms** (LVMThin) — almacenamiento en volúmenes lógicos dinámicos. Guarda **discos de MV y contenedores**.
 
 </div>
 <div class="card card-green">
 
 ### Almacenamiento remoto
 
-- **NFS** — acceso a recursos compartidos de red
-- **iSCSI** — dispositivos de bloque (discos) compartidos por red
+- **NFS** — **servidor NAS**: acceso a directorios compartidos de red
+- **iSCSI** — **servidor SAN**: dispositivos de bloque (discos) compartidos por red
 - **Ceph** — almacenamiento distribuido de alta disponibilidad
-
-</div>
-</div>
-
----
-
-## Tipos de almacenamiento disponibles
-
-<div class="cols-2" style="margin-top:0.8rem">
-<div>
-
-**Directory (local)**
-- Almacenamiento simple basado en carpetas
-- Ideal para almacenar ISOs, backups y plantillas
-- Acceso directo al sistema de ficheros
-
-</div>
-<div>
-
-**LVM-Thin (local-lvm)**
-- Volúmenes lógicos con aprovisionamiento dinámico
-- Ideal para discos de máquinas virtuales
-- Mejor utilización del espacio disponible
 
 </div>
 </div>
@@ -88,45 +64,35 @@ Proxmox permite gestionar varios tipos de almacenamiento:
 <div class="cols-2" style="margin-top:0.8rem">
 <div class="card card-purple">
 
-**Navegación**
+**Acceso**
 - Panel izquierdo → **Datacenter** → **Almacenamiento**
-- Lista de todos los almacenamientos disponibles
-- Información sobre uso y capacidad
+- Vista global de todos los almacenamientos del clúster
+- Muestra: tipo, estado, nodos que lo usan, contenido permitido
 
 </div>
 <div class="card card-yellow">
 
-**Operaciones**
-- Ver detalles de cada almacenamiento
-- Monitorizar capacidad y uso
-- Añadir nuevo almacenamiento remoto
-- Gestionar contenido (ISOs, backups)
+**Acciones disponibles**
+- **Añadir** — incorporar nuevo almacenamiento (NFS, iSCSI, Ceph…)
+- **Editar** — cambiar parámetros del almacenamiento existente
+- **Habilitar / Deshabilitar** — activar o desactivar sin eliminar
+- **Eliminar** — quitar el almacenamiento del inventario
 
 </div>
 </div>
+
+<div class="alerta alerta-info">ℹ️ Gestionar el almacenamiento (Datacenter) ≠ gestionar su contenido (ISOs, backups…). El contenido se gestiona desde el <strong>nodo → almacenamiento → Contenido</strong>.</div>
 
 ---
 
-## Carga de ISOs en Proxmox
+## Gestión de un pool de almacenamiento
 
-<div class="alerta alerta-info">ℹ️ Las ISOs se almacenan en el almacenamiento local <strong>Directory</strong>.</div>
+Acceso: panel izquierdo → seleccionar el pool de almacenamiento (ej: **local**)
 
-<div class="cols-2" style="margin-top:0.8rem">
-<div class="card card-blue">
-
-**Paso 1: Acceder al almacenamiento**
-- Datacenter → Almacenamiento → **local**
-- Pestaña **Contenido**
-
-</div>
-<div class="card card-green">
-
-**Paso 2: Subir archivo**
-- Botón **Cargar** → seleccionar archivo ISO
-- La carga se realiza al servidor Proxmox
-
-</div>
-</div>
+- **Ocupación** — pestaña **Resumen**: tamaño total, espacio usado y disponible
+- **ISOs** — pestaña **Contenido** → filtrar por *ISO Image*: cargar desde equipo local o descargar por URL
+- **Plantillas de contenedor** — pestaña **Contenido** → filtrar por *CT Template*: descargar del catálogo oficial o cargar propia
+- **Backups** — pestaña **Contenido** → filtrar por *VZDump*: ver, restaurar o eliminar copias de seguridad
 
 ---
 
