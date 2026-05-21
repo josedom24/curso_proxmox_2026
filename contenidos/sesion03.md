@@ -421,12 +421,9 @@ La clonación duplica una máquina virtual existente con toda su configuración.
 
 **Tipo de clonación**
 - **Copia completa** — duplica discos (más lento, independiente)
-- **Enlace** — discos vinculados (más rápido, comparte datos)
 
 </div>
 </div>
-
-<div class="alerta alerta-warning">⚠️ La VM original debe estar <strong>detenida</strong> para clonar.</div>
 
 ---
 
@@ -449,7 +446,8 @@ Una **plantilla** es una máquina virtual preconfigurada que sirve como base par
 **Usar plantilla**
 1. Clic derecho en plantilla → **Clonar**
 2. Asignar nombre a la nueva VM
-3. La clonación crea una VM completa independiente
+3. Nuevo tipo de clonación: **Enlace**: discos vinculados (más rápido, comparte datos)
+4. La clonación crea una VM completa independiente
 
 </div>
 </div>
@@ -458,33 +456,9 @@ Una **plantilla** es una máquina virtual preconfigurada que sirve como base par
 
 ## Ventajas de las plantillas
 
-<div class="cols-3" style="margin-top:1rem">
-
-<div class="card card-blue">
-
-### Tiempo
-
-Crear MV nuevas en **minutos** en lugar de horas
-
-</div>
-
-<div class="card card-green">
-
-### Consistencia
-
-Todas las MV tienen la **misma configuración base**
-
-</div>
-
-<div class="card card-purple">
-
-### Mantenimiento
-
-Actualizar la plantilla → aplicar cambios a futuras MV
-
-</div>
-
-</div>
+- **Ahorro de tiempo** — clonar una plantilla tarda segundos frente a instalar y configurar una MV desde cero.
+- **Consistencia** — todas las MV creadas a partir de la misma plantilla parten de una base idéntica: mismo SO, mismas herramientas, misma configuración.
+- **Punto de partida controlado** — si hay que mejorar la base (actualizar paquetes, añadir software), se clona la plantilla, se modifica el clon y se convierte de nuevo en plantilla. Las MV ya existentes no se ven afectadas.
 
 ---
 
@@ -517,33 +491,10 @@ Un **snapshot** es una fotografía del estado de una máquina en un momento conc
 
 ## Casos de uso de snapshots
 
-<div class="cols-3" style="margin-top:1rem">
-
-<div class="card card-purple">
-
-### Antes de cambios
-
-Crear snapshot antes de actualizar SO o cambiar configuración
-
-</div>
-
-<div class="card card-yellow">
-
-### Experimentación
-
-Probar cambios arriesgados sabiendo que se puede volver atrás
-
-</div>
-
-<div class="card card-red">
-
-### Recuperación rápida
-
-Restaurar a un estado conocido sin reinstalar
-
-</div>
-
-</div>
+- **Antes de actualizar el SO o instalar software** — si la actualización rompe algo, se restaura el snapshot en segundos y la MV vuelve al estado anterior sin necesidad de reinstalar nada.
+- **Antes de hacer cambios de configuración** — cambios en servicios, configuración de red, edición de ficheros críticos… el snapshot actúa como red de seguridad.
+- **Entornos de pruebas** — permite experimentar libremente: si el resultado no es el esperado, se descarta y se vuelve al punto de partida.
+- **Clases y laboratorios** — crear un snapshot al inicio de la práctica permite que el alumno pueda volver al estado limpio sin reinstalar la MV.
 
 ---
 
