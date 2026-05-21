@@ -43,7 +43,7 @@ Proxmox permite gestionar varios tipos de almacenamiento:
 ### Almacenamiento local
 
 - **local (isos-hdd)** (Directory) — almacenamiento en directorio. Guarda **ISOs, backups, plantillas de contenedor,...**.
-- **local-lvm (ssd-vms** (LVMThin) — almacenamiento en volúmenes lógicos dinámicos. Guarda **discos de MV y contenedores**.
+- **local-lvm (ssd-vms)** (LVMThin) — almacenamiento en volúmenes lógicos dinámicos. Guarda **discos de MV y contenedores**.
 
 </div>
 <div class="card card-green">
@@ -81,7 +81,6 @@ Proxmox permite gestionar varios tipos de almacenamiento:
 </div>
 </div>
 
-<div class="alerta alerta-info">ℹ️ Gestionar el almacenamiento (Datacenter) ≠ gestionar su contenido (ISOs, backups…). El contenido se gestiona desde el <strong>nodo → almacenamiento → Contenido</strong>.</div>
 
 ---
 
@@ -232,7 +231,7 @@ Se crean a nivel de **nodo del clúster** → configuran el sistema operativo de
 **Pasos**
 1. Panel de Red → **Crear Bridge**
 2. Asignar nombre (ej: `vmbr1`)
-3. Seleccionar interfaz **física** (ej: `eno1`)
+3. Seleccionar interfaz **física** (ej: `eno1`), si queremos que las MV y contenedores conectadas tengan acceso al exterior.
 4. Configurar IP (opcional)
 
 </div>
@@ -332,7 +331,7 @@ Una **zona** define la tecnología de red subyacente. Cada VNet pertenece a una 
 </div>
 </div>
 
-<div class="alerta alerta-info">ℹ️ Para un servidor Proxmox standalone, los <strong>Linux Bridges son suficientes</strong>. El SDN aporta valor principalmente en clústeres.</div>
+<div class="alerta alerta-info">ℹ️ Para un servidor Proxmox standalone, los Linux Bridges son suficientes. El SDN aporta valor principalmente en clústeres.</div>
 
 ---
 
