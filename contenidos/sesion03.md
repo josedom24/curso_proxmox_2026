@@ -364,6 +364,50 @@ El SDN **no elimina** los Linux Bridges, los gestiona por debajo.
 
 <p class="numero">04</p>
 
+# Cortafuegos en Proxmox VE
+
+## Protección de nodos, MVs y contenedores
+
+---
+
+## Cortafuegos integrado en Proxmox VE
+
+Proxmox incluye un **cortafuegos basado en iptables** que opera en tres niveles independientes:
+
+<div class="cols-3" style="margin-top:1rem">
+
+<div class="card card-red">
+
+### Datacenter
+Reglas globales aplicadas a **todo el clúster**. Punto de control centralizado.
+
+</div>
+
+<div class="card card-blue">
+
+### Nodo (host)
+Protege el propio servidor Proxmox: acceso a la **interfaz web** (puerto 8006), SSH, etc.
+
+</div>
+
+<div class="card card-green">
+
+### VM / CT
+Reglas individuales por **máquina virtual o contenedor**. Aislamiento fino del tráfico.
+
+</div>
+
+</div>
+
+<div class="alerta alerta-warning" style="margin-top:1rem">⚠️ El cortafuegos está <strong>deshabilitado por defecto</strong>. Debe activarse explícitamente en cada nivel: Datacenter → Firewall → Enable.</div>
+
+---
+
+<!-- _class: capitulo -->
+<!-- _paginate: false -->
+
+<p class="numero">05</p>
+
 # DEMO 2: Introducción a la gestión de redes con Proxmox VE
 
 ## Configuración de interfaces y bridges virtuales
@@ -395,7 +439,7 @@ El SDN **no elimina** los Linux Bridges, los gestiona por debajo.
 <!-- _class: capitulo -->
 <!-- _paginate: false -->
 
-<p class="numero">05</p>
+<p class="numero">06</p>
 
 # Clonación, plantillas, snapshots y backup de máquinas virtuales
 
@@ -539,7 +583,7 @@ Un **backup** es una copia de seguridad independiente, almacenada en un lugar se
 <!-- _class: capitulo -->
 <!-- _paginate: false -->
 
-<p class="numero">06</p>
+<p class="numero">07</p>
 
 # DEMO 3: Clonación, plantillas, snapshots y backups
 
