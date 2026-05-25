@@ -399,7 +399,7 @@ Reglas individuales por **máquina virtual o contenedor**. Aislamiento fino del 
 
 </div>
 
-<div class="alerta alerta-warning" style="margin-top:1rem">⚠️ El cortafuegos está <strong>deshabilitado por defecto</strong>. Debe activarse explícitamente en cada nivel: Datacenter → Firewall → Enable.</div>
+<div class="alerta alerta-warning" style="margin-top:1rem">⚠️ El cortafuegos está deshabilitado por defecto. Debe activarse explícitamente en cada nivel: Datacenter → Firewall → Enable.</div>
 
 ---
 
