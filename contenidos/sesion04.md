@@ -109,11 +109,9 @@ Control **granular y flexible**.
 
 Los permisos siguen el patrón **`Objeto.Acción`**. El **objeto** identifica el recurso y la **acción** define qué se puede hacer con él.
 
-<div class="cols-2" style="margin-top:1rem">
-
 <div class="card card-blue">
 
-### Sufijos más frecuentes
+### Acciones más frecuentes
 
 | Sufijo | Qué permite |
 |--------|-------------|
@@ -123,6 +121,10 @@ Los permisos siguen el patrón **`Objeto.Acción`**. El **objeto** identifica el
 | `.Modify` | **Modificar**: cambiar configuración existente |
 
 </div>
+
+---
+
+## Estructura de los permisos en Proxmox
 
 <div class="card card-green">
 
@@ -138,7 +140,7 @@ Los permisos siguen el patrón **`Objeto.Acción`**. El **objeto** identifica el
 
 </div>
 
-</div>
+
 
 ---
 
