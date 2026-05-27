@@ -702,20 +702,65 @@ Facilita tareas repetitivas y gestión de máquinas a escala.
 
 ---
 
-## Ampliación y escalabilidad del sistema
+## Almacenamiento remoto SAN/NAS
 
-### Almacenamiento remoto SAN/NAS
+<div class="cols-2" style="margin-top:1rem">
 
-- Centralización del almacenamiento
-- Mayor capacidad y flexibilidad
-- Independencia del servidor físico
+<div class="card card-blue">
 
-### Clúster de alta disponibilidad
+### ¿Qué aporta?
 
-- Múltiples nodos Proxmox
-- Migración en vivo de máquinas
-- Redundancia y tolerancia a fallos
-- Escalabilidad horizontal
+- **Centralización**: todos los nodos comparten el mismo almacenamiento
+- **Independencia del servidor físico**: si un nodo falla, sus discos siguen accesibles desde otro
+- **Capacidad escalable**: se amplía sin tocar los nodos de cómputo
+- **Snapshots y backups** delegados al propio sistema de almacenamiento
+
+</div>
+
+<div class="card card-green">
+
+### Protocolos soportados por Proxmox
+
+| Protocolo | Tipo | Uso típico |
+|-----------|------|-----------|
+| **NFS** | NAS (red) | Sencillo, ampliamente compatible |
+| **Ceph RBD** | Distribuido | HA nativo, el más recomendado |
+| **iSCSI** | SAN (bloque) | Almacenamiento empresarial |
+| **ZFS over iSCSI** | Bloque+ZFS | Snapshots avanzados |
+
+</div>
+
+</div>
+
+---
+
+## Clúster de alta disponibilidad
+
+<div class="cols-2" style="margin-top:1rem">
+
+<div class="card card-purple">
+
+### Requisitos mínimos
+
+- **3 nodos** (quórum para decisiones del clúster)
+- Almacenamiento **compartido** entre nodos (Ceph, NFS, iSCSI)
+- Red dedicada de **corosync** (latencia < 5 ms recomendada)
+- Mismo rango de versión de Proxmox VE
+
+</div>
+
+<div class="card card-orange">
+
+### Qué se gana
+
+- **Migración en vivo** (`live migration`): mover VMs entre nodos sin apagarlas
+- **HA automático**: si un nodo cae, sus VMs arrancan en otro en segundos
+- **Corosync + Pacemaker**: gestión de quórum y fencing integrada
+- **Escalabilidad horizontal**: añadir nodos sin interrumpir el servicio
+
+</div>
+
+</div>
 
 ---
 
