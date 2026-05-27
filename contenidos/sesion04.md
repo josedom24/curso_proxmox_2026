@@ -105,6 +105,43 @@ Control **granular y flexible**.
 
 ---
 
+## Estructura de los permisos en Proxmox
+
+Los permisos siguen el patrón **`Objeto.Acción`**. El **objeto** identifica el recurso y la **acción** define qué se puede hacer con él.
+
+<div class="cols-2" style="margin-top:1rem">
+
+<div class="card card-blue">
+
+### Sufijos más frecuentes
+
+| Sufijo | Qué permite |
+|--------|-------------|
+| `.Audit` | **Solo lectura**: ver estado, listar recursos |
+| `.Use` | **Interactuar**: usar el recurso ya creado |
+| `.Allocate` | **Crear/asignar**: generar nuevos recursos |
+| `.Modify` | **Modificar**: cambiar configuración existente |
+
+</div>
+
+<div class="card card-green">
+
+### Ejemplos concretos
+
+- `VM.Audit` → Ver la lista de VMs y su estado
+- `VM.PowerMgmt` → Encender, apagar, reiniciar una VM
+- `VM.Clone` → Clonar una VM o plantilla existente
+- `Datastore.AllocateSpace` → Guardar discos en el almacenamiento
+- `Pool.Audit` → Ver los recursos de un pool sin modificarlos
+- `SDN.Use` → Conectar VMs a redes virtuales ya creadas
+- `SDN.Allocate` → Crear y configurar nuevas redes virtuales
+
+</div>
+
+</div>
+
+---
+
 ## ¿Qué queríamos conseguir? (I)
 
 <div class="cols-2" style="margin-top:1.5rem">
