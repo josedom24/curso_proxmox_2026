@@ -626,27 +626,6 @@ La API está **organizada jerárquicamente**:
 
 ---
 
-## Ejemplos con `pvesh` — Cliente universal
-
-<div style="margin-top:1rem">
-
-```bash
-pvesh get /nodes                               # Listar nodos
-pvesh get /pools/Imagenes                      # Ver miembros de un pool
-pvesh get /access/users --output-format json   # Listar usuarios en JSON
-pvesh create /nodes/proxmox1/qemu --vmid 999 \
-  --name nueva --memory 2048                   # Crear VM
-
-pvesh set /nodes/proxmox1/qemu/321/config \
-  --description "Plantilla Debian 12"          # Modificar configuración
-
-pvesh delete /pools/Antiguo                    # Eliminar pool
-```
-
-</div>
-
----
-
 ## Scripts de administración
 
 <div class="card card-blue" style="margin-top:1.5rem">
