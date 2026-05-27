@@ -496,24 +496,19 @@ cloud-init obtiene la configuración desde un:
 
 ---
 
-## Templates con cloud-init en nuestro centro
+## ¿Qué conseguimos con cloud-init?
 
 <div class="card card-yellow" style="margin-top:1.5rem">
 
-### Máquinas virtuales base
-
 En el **pool "Imágenes"** tenemos plantillas con  **cloud-init ya instalado**, listos para ser clonados.
-
-### Ventajas de nuestro enfoque
 
 - Los usuarios **clonan una plantilla** existente
 - La máquina nueva se **configura automáticamente** en el primer arranque
 - Cada usuario puede personalizar:
   - Nombre de máquina
-  - Credenciales de acceso
+  - Credenciales de acceso (usuarios y claves SSH)
   - Configuración de red
-  - Claves SSH para acceso remoto
-
+  
 **Resultado**: creación rápida, consistente y personalizada de máquinas virtuales
 
 </div>
