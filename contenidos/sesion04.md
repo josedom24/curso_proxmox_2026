@@ -502,7 +502,7 @@ cloud-init obtiene la configuración desde un:
 
 ### Máquinas virtuales base
 
-Los **templates del pool "Imágenes"** son máquinas virtuales con **cloud-init ya instalado**, listos para ser clonados.
+En el **pool "Imágenes"** tenemos plantillas con  **cloud-init ya instalado**, listos para ser clonados.
 
 ### Ventajas de nuestro enfoque
 
