@@ -399,14 +399,31 @@ Otorgar al grupo `profesores-iesgn` acceso de auditoría o intervención sobre l
 
 ---
 
-<!-- _class: capitulo -->
-<!-- _paginate: false -->
+## Posibles mejoras (II)
 
-<p class="numero">02</p>
+<div class="cols-2" style="margin-top:1.5rem">
 
-# DEMO 1: Clonación de MV de un usuario
+<div class="card card-purple">
 
-## Perfil alumno
+### 3. Aislamiento de bridges por grupos
+
+- Ahora mismo tenemos acceso completo con el rol **iesgn-red** sobre `/sdn/zones/localnetwork`.
+- Podemos quitar ese acceso y trabajar directamente con los bridge/VNet directamente.
+- Por lo tanto podemos conceder el rol **iesgn-red** a un grupo sobre `/sdn/zones/localnetwork/<bridge/VNet>`.
+
+
+</div>
+
+<div class="card card-yellow">
+
+### 4. Creación de bridges para cada usuario
+
+- Creamos un bridge o VNet por cada usuario, y le asignamos el role **iesgn-red** **solo al usuario correspondiente** sobre la ruta `/sdn/zones/localnetwork/<bridge/VNet>`.
+- Se puede automatizar con scripts.
+
+</div>
+
+</div>
 
 ---
 
@@ -415,7 +432,7 @@ Otorgar al grupo `profesores-iesgn` acceso de auditoría o intervención sobre l
 
 <p class="numero">02</p>
 
-# DEMO 2: Configuración de máquinas virtuales usando cloud-init
+# Configuración de máquinas virtuales usando cloud-init
 
 ## Automatización de la configuración inicial
 
