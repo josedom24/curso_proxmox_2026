@@ -49,8 +49,6 @@ Agrupación lógica de:
 - **Contenedores (LXC)**
 - **Almacenamiento**
 
-Para facilitar su gestión y asignación de cuotas.
-
 Cada usuario o departamento puede tener su propio pool.
 
 Permite **organizar y limitar** los recursos disponibles.
