@@ -54,9 +54,10 @@ echo "--- Pools para el grupo '$GRUPO' (realm: $REALM) ---"
 echo ""
 
 while IFS= read -r userid; do
-    usuario="${userid%@*}"
+    usuario_raw="${userid%@*}"
+    usuario=$(echo "$usuario_raw" | tr '@.' '_')
     poolid="Proyecto_${usuario}"
-    crear_pool "$poolid" "Pool de trabajo de $usuario"
+    crear_pool "$poolid" "Pool de trabajo de $usuario_raw"
 done <<< "$USUARIOS"
 
 echo ""
@@ -73,7 +74,8 @@ echo ""
 echo "--- ACLs sobre pools individuales ---"
 
 while IFS= read -r userid; do
-    usuario="${userid%@*}"
+    usuario_raw="${userid%@*}"
+    usuario=$(echo "$usuario_raw" | tr '@.' '_')
     pveum acl modify /pool/Proyecto_"$usuario" --roles usuario --users "$userid"
     echo "  [OK] $userid -> usuario -> /pool/Proyecto_${usuario}"
 done <<< "$USUARIOS"
