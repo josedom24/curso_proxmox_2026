@@ -50,6 +50,14 @@ if [[ -z "$USUARIOS" ]]; then
     exit 0
 fi
 
+# --- Quitar ACL de administrador en / ---
+echo "--- Eliminando ACL de administrador en / ---"
+
+pveum acl modify / --roles Administrator --groups "$GRUPO" --delete 1
+echo "  [OK] $GRUPO -> Administrator -> / (eliminada)"
+
+echo ""
+
 echo "--- Pools para el grupo '$GRUPO' (realm: $REALM) ---"
 echo ""
 

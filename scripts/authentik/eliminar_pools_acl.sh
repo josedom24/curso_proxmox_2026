@@ -112,4 +112,12 @@ while IFS= read -r userid; do
 done <<< "$USUARIOS"
 
 echo ""
+
+# --- Restaurar ACL de administrador en / ---
+echo "--- Restaurando ACL de administrador en / ---"
+
+pveum acl modify / --roles Administrator --groups "$GRUPO"
+echo "  [OK] $GRUPO -> Administrator -> / (restaurada)"
+
+echo ""
 echo "=== Hecho. Verifica con: pvesh get /pools  /  pveum acl list ==="
