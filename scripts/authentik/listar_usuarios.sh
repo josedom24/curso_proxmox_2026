@@ -8,23 +8,23 @@ REALM="authentik"
 
 echo "=== Usuarios del realm: $REALM ==="
 echo ""
-printf "%-45s %s\n" "USUARIO" "GRUPOS"
-printf "%-45s %s\n" "-------" "------"
 
-USUARIOS=$(pveum user list --output-format json \
-    | grep -o '"userid":"[^"]*@'"$REALM"'"' \
-    | grep -o '"[^"]*@'"$REALM"'"' \
-    | tr -d '"' \
-    | sort)
+pveum user list --output-format json | python3 -c "
+import sys, json
 
-while IFS= read -r userid; do
-    grupos=$(pvesh get /access/users/"$userid" --output-format json 2>/dev/null \
-        | grep -o '"groups":"[^"]*"' \
-        | sed 's/"groups":"//;s/"//' \
-        || true)
-    [[ -z "$grupos" ]] && grupos="-"
-    printf "%-45s %s\n" "$userid" "$grupos"
-done <<< "$USUARIOS"
+realm = '$REALM'
+users = json.load(sys.stdin)
+filtrados = [u for u in users if u.get('userid', '').endswith('@' + realm)]
+filtrados.sort(key=lambda u: u['userid'])
 
-echo ""
-echo "Total: $(echo "$USUARIOS" | wc -l)"
+print(f\"{'USUARIO':<45} {'GRUPOS'}\")
+print(f\"{'-------':<45} {'------'}\")
+
+for u in filtrados:
+    userid = u['userid']
+    grupos = u.get('groups', '-') or '-'
+    print(f'{userid:<45} {grupos}')
+
+print()
+print(f'Total: {len(filtrados)}')
+"
